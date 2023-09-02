@@ -9,7 +9,7 @@
 - Gustavo Monerat Rosa
 
 ### Abstract
-Este projeto tem como intuito exercitar a criação de classes em java e integrar com os conhecimentos obtidos em Banco de dados.  Essa intregação é feita a partir do acesso, criação e armazenamendo de dados através da conexão do Java com o PostgreSQL.
+Este projeto tem como objetivo exercitar a criação de classes em Java e integrar com os conhecimentos obtidos em Banco de Dados. Essa integração é feita a partir do acesso, criação e armazenamento de dados através da conexão do Java com o PostgreSQL.
 
 ### E-commerce
 Criar um banco de dados que contenha:
