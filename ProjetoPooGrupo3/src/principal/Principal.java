@@ -55,7 +55,6 @@ public class Principal {
 				4) Listar
 				5) Sair
 				-----------------------------
-				Informe uma opção:
 				""");
 		return Util.validarInteiro("Informe uma opção:");
 	}
