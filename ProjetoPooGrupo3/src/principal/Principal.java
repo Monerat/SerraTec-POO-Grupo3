@@ -39,7 +39,6 @@ public class Principal {
 			System.out.println("Ocorreu um problema na criacao do banco de dados");
 		}
 		
-		
 	}
 	
 	public static int menu() {
@@ -48,7 +47,7 @@ public class Principal {
 		System.out.println(Util.LINHA);
 		System.out.println("""
 				Cadastro de Clientes
-				-----------------------------
+				SHEUSHEIASURHNI-----------------------------
 				1) Cadastrar
 				2) Alterar
 				3) Excluir
