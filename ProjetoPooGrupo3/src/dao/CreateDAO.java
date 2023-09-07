@@ -20,6 +20,7 @@ public class CreateDAO {
 			if (criarSchema(conexao, schema)) {
 				criarEntidadeCliente(conexao, schema);
 				criarEntidadeProduto(conexao,schema);
+				criarEntidadePedidoItem(conexao,schema);
 				
 				bdCriado = true;
 			}
@@ -125,7 +126,7 @@ public class CreateDAO {
 			}
 
 			if (estrangeiro) {
-				sql += "REFERENCES " + entidadeEstrangeira + "(" + atributoEstrangeiro + ")";
+				sql += "REFERENCES " + schema + "." + entidadeEstrangeira + "(" + atributoEstrangeiro + ")";
 			}
 			
 			con.query(sql);
@@ -181,7 +182,20 @@ public class CreateDAO {
 		}		
 	}
 	
-	
+	private static void criarEntidadePedidoItem(Conexao con, String schema) {
+		String entidade = "pedidoitem";
+		
+		if (!entidadeExists(con, schema, entidade))		
+			criarTabela(con, entidade, schema);
+		
+		if (entidadeExists(con, schema, entidade)) {
+			criarCampo(con, schema, entidade, "idpedidoitem", "serial", true,  false, null, null);
+			criarCampo(con, schema, entidade, "qtd"	 , "double precision", false, false, null, null);
+			criarCampo(con, schema, entidade, "idpedido"	 , "int", false, true, "pedido", "idpedido");
+			criarCampo(con, schema, entidade, "idproduto"	 , "int", false, true, "produto", "idproduto");
+			criarCampo(con, schema, entidade, "idempresa"	 , "int", false, true, "empresa", "idempresa");
+		}		
+	}
 
 	public static boolean databaseExists(Conexao con, String bd) {
 		ResultSet entidade;
