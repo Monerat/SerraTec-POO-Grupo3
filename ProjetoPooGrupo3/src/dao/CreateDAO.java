@@ -21,7 +21,7 @@ public class CreateDAO {
 				criarEntidadeCliente(conexao, schema);
 				criarEntidadeProduto(conexao,schema);
 				criarEntidadePedido(conexao,schema);
-				
+				criarEntidadeEmpresa(conexao, schema);
 				bdCriado = true;
 			}
 		}
@@ -182,9 +182,9 @@ public class CreateDAO {
 		}		
 	}
 	
+
 	private static void criarEntidadePedido(Conexao con, String schema) {
 		String entidade = "pedido";
-		
 		if (!entidadeExists(con, schema, entidade))		
 			criarTabela(con, entidade, schema);
 		
@@ -192,10 +192,23 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "idpedido", "serial", true,  false, null, null);
 			criarCampo(con, schema, entidade, "data_ped"	 , "varchar(100)", false, false, null, null);
 			criarCampo(con, schema, entidade, "idcliente"	 , "int", false, true, "cliente", "idcliente");
+		}
+	}
+			
+			
+	private static void criarEntidadeEmpresa(Conexao con, String schema) {
+		String entidade = "empresa";
+		
+		if (!entidadeExists(con, schema, entidade))		
+			criarTabela(con, entidade, schema);
+		
+		if (entidadeExists(con, schema, entidade)) {
+			criarCampo(con, schema, entidade, "idempresa", "serial"	 	 , true,  false, null, null);
+			criarCampo(con, schema, entidade, "nome_fantasia"	 , "varchar(100)", false, false, null, null);
+			criarCampo(con, schema, entidade, "razao_social"	 , "varchar(100)", false, false, null, null);
 		}		
 	}
-	
-	
+
 
 	public static boolean databaseExists(Conexao con, String bd) {
 		ResultSet entidade;
