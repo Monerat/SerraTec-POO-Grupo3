@@ -22,6 +22,8 @@ public class CreateDAO {
 				criarEntidadeProduto(conexao,schema);
 				criarEntidadePedido(conexao,schema);
 				criarEntidadeEmpresa(conexao, schema);
+				criarEntidadePedidoItem(conexao,schema);
+				
 				bdCriado = true;
 			}
 		}
@@ -181,8 +183,6 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "vl_un"	 , "double precision", false, false, null, null);
 		}		
 	}
-	
-
 	private static void criarEntidadePedido(Conexao con, String schema) {
 		String entidade = "pedido";
 		if (!entidadeExists(con, schema, entidade))		
@@ -198,7 +198,7 @@ public class CreateDAO {
 			
 	private static void criarEntidadeEmpresa(Conexao con, String schema) {
 		String entidade = "empresa";
-		
+
 		if (!entidadeExists(con, schema, entidade))		
 			criarTabela(con, entidade, schema);
 		
@@ -208,7 +208,22 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "razao_social"	 , "varchar(100)", false, false, null, null);
 		}		
 	}
+	
+	private static void criarEntidadePedidoItem(Conexao con, String schema) {
+		String entidade = "pedidoitem";
 
+		
+		if (!entidadeExists(con, schema, entidade))		
+			criarTabela(con, entidade, schema);
+		
+		if (entidadeExists(con, schema, entidade)) {
+			criarCampo(con, schema, entidade, "idpedidoitem", "serial", true,  false, null, null);
+			criarCampo(con, schema, entidade, "qtd"	 , "double precision", false, false, null, null);
+			criarCampo(con, schema, entidade, "idpedido"	 , "int", false, true, "pedido", "idpedido");
+			criarCampo(con, schema, entidade, "idproduto"	 , "int", false, true, "produto", "idproduto");
+			criarCampo(con, schema, entidade, "idempresa"	 , "int", false, true, "empresa", "idempresa");
+		}		
+	}
 
 	public static boolean databaseExists(Conexao con, String bd) {
 		ResultSet entidade;
