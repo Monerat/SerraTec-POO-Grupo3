@@ -19,6 +19,7 @@ public class CreateDAO {
 			
 			if (criarSchema(conexao, schema)) {
 				criarEntidadeCliente(conexao, schema);
+				criarEntidadeProduto(conexao,schema);
 				
 				bdCriado = true;
 			}
@@ -163,6 +164,20 @@ public class CreateDAO {
 		if (entidadeExists(con, schema, entidade)) {
 			criarCampo(con, schema, entidade, "idcliente", "serial"	 	 , true,  false, null, null);
 			criarCampo(con, schema, entidade, "nome"	 , "varchar(100)", false, false, null, null);
+		}		
+	}
+	
+	private static void criarEntidadeProduto(Conexao con, String schema) {
+		String entidade = "produto";
+		
+		if (!entidadeExists(con, schema, entidade))		
+			criarTabela(con, entidade, schema);
+		
+		if (entidadeExists(con, schema, entidade)) {
+			criarCampo(con, schema, entidade, "idproduto", "serial", true,  false, null, null);
+			criarCampo(con, schema, entidade, "nome_prod"	 , "varchar(100)", false, false, null, null);
+			criarCampo(con, schema, entidade, "descricao"	 , "varchar(200)", false, false, null, null);
+			criarCampo(con, schema, entidade, "vl_un"	 , "double precision", false, false, null, null);
 		}		
 	}
 	

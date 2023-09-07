@@ -15,13 +15,13 @@ abstract class Pessoa {
 	
 	public void alterar() {
 		@SuppressWarnings("resource")
-		Scanner in = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Alteracao de dados");
 		System.out.println("------------------------------------");
 		System.out.println("");
 		System.out.println("Nome: ");
-		String s = in.nextLine();
+		String s = input.nextLine();
 		
 		if (!s.isEmpty() && !s.isBlank() && s != null)
 			this.nome = s;
