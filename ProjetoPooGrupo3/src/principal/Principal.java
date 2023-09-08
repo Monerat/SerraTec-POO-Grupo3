@@ -47,7 +47,7 @@ public class Principal {
 		System.out.println(Util.LINHA);
 		System.out.println("""
 				Cadastro de Clientes
-				SHEUSHEIASURHNI-----------------------------
+				-----------------------------
 				1) Cadastrar
 				2) Alterar
 				3) Excluir
