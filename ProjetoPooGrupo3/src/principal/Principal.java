@@ -36,13 +36,14 @@ public class Principal {
 			con.conect();
 			opcoes(menu());
 		} else {
-			System.out.println("Ocorreu um problema na criacao do banco de dados");
+			System.out.println("Ocorreu um problema na criação do banco de dados");
 		}
 		
 	}
 	
 	public static int menu() {
 		System.out.println(Util.LINHA);
+		System.out.println(Util.CABECALHO);
 		System.out.println("         Menu");
 		System.out.println(Util.LINHA);
 		System.out.println("""
@@ -82,10 +83,99 @@ public class Principal {
 	}
 	
 	public static void cadastrar() {
+		//criar menu cadastrar
 		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
 	}
 	
+	public static void alterar() {
+		//criar menu alterar
+	}
+	
 	public static void excluir() {
-		//ClienteDML.excluirCliente(con, SCHEMA, Cliente.excluir());
+		//criar menu cadastrar
+	}
+	
+	public static void listar() {
+		//criar menu listar
+	}
+	
+	public static void cadastrarCliente() {
+		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
+	}
+	
+	public static void cadastrarEmpresa() {
+		//criar o cadastro
+	}
+	
+	public static void cadastrarPedido() {
+		//criar o cadastro
+	}
+	
+	public static void cadastrarPedidoItem() {
+		//criar o cadastro
+	}
+	
+	public static void cadastrarProduto() {
+		//criar o cadastro
+	}
+	
+	public static void alterarCliente() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarEmpresa() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarPedido() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarPedidoItem() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarProduto() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void excluirCliente() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirEmpresa() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirPedido() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirPedidoItem() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirProduto() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void listarCliente() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarEmpresa() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarPedido() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarPedidoItem() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarProduto() {
+		//criar o listar de cada entidade
 	}
 }

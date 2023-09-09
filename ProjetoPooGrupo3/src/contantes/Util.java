@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 public class Util {
 	public static Scanner in = new Scanner(System.in);
-	public static final String CABECALHO = "Amazonia";
-	public static final String LINHA = "----------------------------------";
-	public static final String LINHAD = "==================================";
+	public static final String CABECALHO = 	"--------------Amazonia------------";
+	public static final String LINHA = 		"----------------------------------";
+	public static final String LINHAD = 	"==================================";
+	public static final String LINHAB = 	"__________________________________";
 	
 	public enum CRUD {
 		CADASTRAR,
@@ -26,7 +27,7 @@ public class Util {
 	}
 	
 	public static LocalDate validarData(String mensagem) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/mm/yyyy");
 		LocalDate dataConvertida = null;
 		String sData; 
 		boolean dataValidada = false;
@@ -40,7 +41,7 @@ public class Util {
 				dataValidada = true;
 				return dataConvertida;
 			} catch (Exception e) {
-				System.out.println("Data invalida");	
+				System.out.println("Data inválida");	
 				return null;
 			}
 		} while (!dataValidada);
@@ -57,7 +58,7 @@ public class Util {
 				numero = Integer.parseInt(s);
 				validado = true;
 			} catch (Exception e) {
-				System.out.println("Informe um numero valido - " + e.getMessage());
+				System.out.println("Informe um número válido - " + e.getMessage());
 			}
 		} while (!validado);
 		
@@ -78,7 +79,7 @@ public class Util {
 				numero = Double.parseDouble(s);
 				validado = true;
 			} catch (Exception e) {
-				System.out.println("Informe um numero valido - " + e.getMessage());
+				System.out.println("Informe um número válido - " + e.getMessage());
 			}
 		} while (!validado);
 		
