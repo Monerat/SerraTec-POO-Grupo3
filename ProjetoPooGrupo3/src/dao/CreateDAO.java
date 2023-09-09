@@ -135,28 +135,6 @@ public class CreateDAO {
 		}
 	}
 	
-	private static void criarChaveComposta(Conexao con, String schema, String entidade, 
-			String nomesCamposCompostos ) {
-		
-		boolean chaveExist = false;
-		String sql = "SELECT CONNAME FROM pg_constraint where conname = 'chave_pk'";				
-		ResultSet result = con.query(sql);
-		
-		try {
-			chaveExist = (result.next()?true:false);
-			
-		} catch (SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
-		
-		if (!chaveExist) {
-			sql = "alter table " + schema + "." + entidade + " add constraint chave_pk" +
-					" primary key (" + nomesCamposCompostos + ")";
-				
-		con.query(sql);
-		}
-	}
 		
 	private static void criarEntidadeCliente(Conexao con, String schema) {
 		String entidade = "cliente";

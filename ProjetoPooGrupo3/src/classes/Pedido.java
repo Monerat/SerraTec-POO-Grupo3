@@ -10,6 +10,7 @@ public class Pedido {
 	private int idcliente;
 	
 	public static Pedido cadastra() {
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		Pedido pe = new Pedido();
 		
