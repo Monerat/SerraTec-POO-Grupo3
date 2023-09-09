@@ -42,20 +42,19 @@ public class Principal {
 	}
 	
 	public static int menu() {
-		System.out.println(Util.LINHA);
+		System.out.println(Util.LINHAD);
 		System.out.println(Util.CABECALHO);
-		System.out.println("         Menu");
-		System.out.println(Util.LINHA);
+		System.out.println(Util.MENU);
+		System.out.println(Util.LINHAD);
 		System.out.println("""
-				Cadastro de Clientes
-				-----------------------------
+				
 				1) Cadastrar
 				2) Alterar
 				3) Excluir
 				4) Listar
 				5) Sair
-				-----------------------------
 				""");
+		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
 	}
 	

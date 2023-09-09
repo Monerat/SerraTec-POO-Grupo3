@@ -7,9 +7,11 @@ import java.util.Scanner;
 public class Util {
 	public static Scanner in = new Scanner(System.in);
 	public static final String CABECALHO = 	"--------------Amazonia------------";
+	public static final String MENU = 		"----------------Menu--------------";
 	public static final String LINHA = 		"----------------------------------";
 	public static final String LINHAD = 	"==================================";
 	public static final String LINHAB = 	"__________________________________";
+	
 	
 	public enum CRUD {
 		CADASTRAR,
