@@ -7,7 +7,8 @@ public class Empresa {
 	private String nome_fantasia;
 	private String razao_social;
 	
-	public static Empresa cadastra() {
+
+	public static Empresa cadastrar() {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		Empresa e = new Empresa();

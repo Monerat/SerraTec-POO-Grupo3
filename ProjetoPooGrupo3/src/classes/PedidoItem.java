@@ -9,7 +9,8 @@ import java.util.Scanner;
 	private int idproduto;
 	private int idempresa;
 
-	public static PedidoItem cadastra() {
+	public static PedidoItem cadastrar() {
+
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		PedidoItem pdi = new PedidoItem();

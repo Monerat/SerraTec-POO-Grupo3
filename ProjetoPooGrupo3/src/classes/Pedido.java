@@ -9,7 +9,8 @@ public class Pedido {
 	private LocalDate data_ped;
 	private int idcliente;
 	
-	public static Pedido cadastra() {
+
+	public static Pedido cadastrar() {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		Pedido pe = new Pedido();

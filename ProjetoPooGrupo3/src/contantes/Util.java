@@ -21,7 +21,7 @@ public class Util {
 	public static final String MENUPEDIDOITEM = "------------Pedido Item---------";
 	public static final String MENUEMPRESA = "------------Empresa------------";
 	public static final String MENUFINAL = "------Programa Finalizado------";
-	
+
 	public enum CRUD {
 		CADASTRAR,
 		ALTERAR,

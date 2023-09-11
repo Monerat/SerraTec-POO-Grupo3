@@ -8,7 +8,7 @@ public class Produto {
 	private String descricao;
 	private double vl_un;
 	
-	public static Produto cadastra() {
+	public static Produto cadastrar() {
 		Scanner input = new Scanner(System.in);
 		Produto p = new Produto();
 		

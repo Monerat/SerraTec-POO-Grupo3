@@ -1,6 +1,8 @@
 package principal;
 
 
+import java.util.ArrayList;
+
 import classes.*;
 import contantes.Util;
 import dao.*;
@@ -22,7 +24,7 @@ public class Principal {
 	
 	
 	public static void main(String[] args) {
-
+				
 		dadosCon.setBanco(BANCO);
 		dadosCon.setLocal(LOCAL);
 		dadosCon.setUser(USUARIO);
@@ -34,6 +36,7 @@ public class Principal {
 		if (CreateDAO.createBD(BANCO, SCHEMA, dadosCon)) {
 			con = new Conexao(dadosCon); 
 			con.conect();
+			
 			opcoes(menu());
 		} else {
 			System.out.println("Ocorreu um problema na criação do banco de dados");
@@ -41,7 +44,26 @@ public class Principal {
 		
 	}
 	
-	public static int menu() {
+	public static int  menu() {	
+		System.out.println(Util.LINHAD);
+		System.out.println(Util.CABECALHO);
+		System.out.println(Util.LINHAD);
+		System.out.println("""
+				
+				1) Cliente
+				2) Empresa
+				3) Pedido
+				4) Itens do Pedido
+				5) Produto
+			
+				""");
+		System.out.println(Util.LINHAD);
+		return Util.validarInteiro("Informe uma opção:");
+		
+		}
+
+	
+	public static int subMenu() {
 		System.out.println(Util.LINHAD);
 		System.out.println(Util.CABECALHO);
 		System.out.println(Util.MENU);
@@ -58,22 +80,19 @@ public class Principal {
 		return Util.validarInteiro("Informe uma opção:");
 	}
 	
-	public static void opcoes(int opcao) {
+	public static void opcaoCrudCliente(int opcao) {
 		switch (opcao) {
 		case 1:
-			cadastrar();
+			cadastrarCliente();
 			break;
 		case 2:
-			//alterar();
+			alterarCliente();
 			break;
 		case 3:
-			//exclir();
+			excluirCliente();
 			break;
 		case 4:
-			//listar();
-			break;
-		case 5:
-			System.out.println("Sistema finalizado.");
+			listarCliente();
 			break;
 		default:
 			System.out.println("Opção inválidada");
@@ -81,6 +100,7 @@ public class Principal {
 		}
 	}
 	
+
 	public static void cadastrar() {
 		//criar menu cadastrar
 		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
@@ -97,25 +117,133 @@ public class Principal {
 	public static void listar() {
 		//criar menu listar
 	}
+
+	public static void opcaoCrudEmpresa(int opcao) {
+		switch (opcao) {
+		case 1:
+			cadastrarEmpresa();
+			break;
+		case 2:
+			alterarEmpresa();
+			break;
+		case 3:
+			excluirEmpresa();
+			break;
+		case 4:
+			listarEmpresa();
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
+	
+	public static void opcaoCrudProduto(int opcao) {
+		switch (opcao) {
+		case 1:
+			cadastrarProduto();
+			break;
+		case 2:
+			alterarProduto();
+			break;
+		case 3:
+			excluirProduto();
+			break;
+		case 4:
+			listarProduto();
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
+	
+	public static void opcaoCrudPedido(int opcao) {
+		switch (opcao) {
+		case 1:
+			cadastrarPedido();
+			break;
+		case 2:
+			alterarPedido();
+			break;
+		case 3:
+			excluirPedido();
+			break;
+		case 4:
+			listarPedido();
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
+	
+	public static void opcaoCrudPedidoItem(int opcao) {
+		switch (opcao) {
+		case 1:
+			cadastrarPedidoItem();
+			break;
+		case 2:
+			alterarPedidoItem();
+			break;
+		case 3:
+			excluirPedidoItem();
+			break;
+		case 4:
+			listarPedidoItem();
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
+	
+	public static void opcoes(int opcao) {
+		switch (opcao) {
+		case 1:
+			opcaoCrudCliente(subMenu());
+			break;
+		case 2:
+			opcaoCrudEmpresa(subMenu());
+			break;
+		case 3:
+			opcaoCrudPedido(subMenu());
+			break;
+		case 4:
+			opcaoCrudPedidoItem(subMenu());
+			break;
+		case 5:
+			opcaoCrudProduto(subMenu());
+			break;
+		case 6:
+			System.out.println("Sair.");
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
 	
 	public static void cadastrarCliente() {
 		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
 	}
 	
 	public static void cadastrarEmpresa() {
-		//criar o cadastro
+		EmpresaDML.gravarEmpresa(con, SCHEMA, Empresa.cadastrar());
 	}
 	
 	public static void cadastrarPedido() {
-		//criar o cadastro
+		PedidoDML.gravarPedido(con, SCHEMA, Pedido.cadastrar());
 	}
 	
 	public static void cadastrarPedidoItem() {
-		//criar o cadastro
+		PedidoItemDML.gravarPedidoItem(con, SCHEMA, PedidoItem.cadastrar());
+
 	}
 	
 	public static void cadastrarProduto() {
-		//criar o cadastro
+		ProdutoDML.gravarProduto(con, SCHEMA, Produto.cadastrar());
+
 	}
 	
 	public static void alterarCliente() {
@@ -177,4 +305,5 @@ public class Principal {
 	public static void listarProduto() {
 		//criar o listar de cada entidade
 	}
+	
 }
