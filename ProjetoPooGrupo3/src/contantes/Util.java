@@ -11,7 +11,16 @@ public class Util {
 	public static final String LINHA = 		"----------------------------------";
 	public static final String LINHAD = 	"==================================";
 	public static final String LINHAB = 	"__________________________________";
-	
+	public static final String MENUCADASTRO = "------------Cadastro------------";
+	public static final String MENUALTERACAO = "------------Alteração-----------";
+	public static final String MENUEXCLUIR = "------------Excluir-------------";
+	public static final String MENUIMPRIMIR = "------------Imprimir------------";
+	public static final String MENUCLIENTE = "------------Cliente-------------";
+	public static final String MENUPRODUTO = "------------Produto-------------";
+	public static final String MENUPEDIDO = "------------Pedido--------------";
+	public static final String MENUPEDIDOITEM = "------------Pedido Item---------";
+	public static final String MENUEMPRESA = "------------Empresa------------";
+	public static final String MENUFINAL = "------Programa Finalizado------";
 	
 	public enum CRUD {
 		CADASTRAR,
