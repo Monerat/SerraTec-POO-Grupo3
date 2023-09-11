@@ -33,8 +33,7 @@ public class ListaClientes {
 				localizado = c;
 				break;
 			}
-		}		
-	
+		}
 		return localizado;
 	}
 	
