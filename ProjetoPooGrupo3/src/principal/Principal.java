@@ -36,26 +36,25 @@ public class Principal {
 			con.conect();
 			opcoes(menu());
 		} else {
-			System.out.println("Ocorreu um problema na criacao do banco de dados");
+			System.out.println("Ocorreu um problema na criação do banco de dados");
 		}
-		
 		
 	}
 	
 	public static int menu() {
-		System.out.println(Util.LINHA);
-		System.out.println("         Menu");
-		System.out.println(Util.LINHA);
+		System.out.println(Util.LINHAD);
+		System.out.println(Util.CABECALHO);
+		System.out.println(Util.MENU);
+		System.out.println(Util.LINHAD);
 		System.out.println("""
-				Cadastro de Clientes
-				-----------------------------
+				
 				1) Cadastrar
 				2) Alterar
 				3) Excluir
 				4) Listar
 				5) Sair
-				-----------------------------
 				""");
+		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
 	}
 	
@@ -83,10 +82,150 @@ public class Principal {
 	}
 	
 	public static void cadastrar() {
-		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
+		
+		
+	}
+	
+	public static void alterar() {
+		//criar menu alterar
 	}
 	
 	public static void excluir() {
-		//ClienteDML.excluirCliente(con, SCHEMA, Cliente.excluir());
+		//criar menu cadastrar
+	}
+	
+	public static void listar() {
+		//criar menu listar
+	}
+	
+	public static void cadastrarCliente() {
+		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
+	}
+	
+	public static void cadastrarEmpresa() {
+		EmpresaDML.gravarEmpresa(con, SCHEMA, Empresa.cadastrar());
+	}
+	
+	public static void cadastrarPedido() {
+		PedidoDML.gravarPedido(con, SCHEMA, Pedido.cadastrar());
+	}
+	
+	public static void cadastrarPedidoItem() {
+		PedidoItemDML.gravarPedidoItem(con, SCHEMA, PedidoItem.cadastrar());
+
+	}
+	
+	public static void cadastrarProduto() {
+		ProdutoDML.gravarProduto(con, SCHEMA, Produto.cadastrar());
+
+	}
+	
+	public static void alterarCliente() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarEmpresa() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarPedido() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarPedidoItem() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void alterarProduto() {
+		//criar o Alterar o cadastro
+	}
+	
+	public static void excluirCliente() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirEmpresa() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirPedido() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirPedidoItem() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void excluirProduto() {
+		//criar o excluir o cadastro
+	}
+	
+	public static void listarCliente() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarEmpresa() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarPedido() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarPedidoItem() {
+		//criar o listar de cada entidade
+	}
+	
+	public static void listarProduto() {
+		//criar o listar de cada entidade
+	}
+	
+	
+	
+	public static int  subMenu(int opcao) {
+		String nomeSubMenu;
+		switch (opcao) {
+		case 1:
+			nomeSubMenu = Util.MENUCADASTRO;
+			break;
+		case 2:
+			nomeSubMenu = Util.MENUALTERACAO;
+
+			break;
+		case 3:
+			nomeSubMenu = Util.MENUEXCLUIR;
+
+			break;
+		case 4:
+			nomeSubMenu = Util.MENUIMPRIMIR;
+
+			break;
+		
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+		
+		
+		System.out.println(Util.LINHAD);
+		System.out.println(Util.CABECALHO);
+		System.out.println(Util.LINHAD);
+		System.out.println(nomeSubMenu);
+		System.out.println("""
+				
+				1) Cliente
+				2) Empresa
+				3) Pedido
+				4) Itens do Pedido
+				5) Produto
+			
+				""");
+		System.out.println(Util.LINHAD);
+		return Util.validarInteiro("Informe uma opção:");
+		
+		}
+	public static void subMenuOpcoes(int opcao) {
+		
+		
 	}
 }

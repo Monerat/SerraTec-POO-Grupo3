@@ -20,6 +20,8 @@ public class CreateDAO {
 			if (criarSchema(conexao, schema)) {
 				criarEntidadeCliente(conexao, schema);
 				criarEntidadeProduto(conexao,schema);
+				criarEntidadePedido(conexao,schema);
+				criarEntidadeEmpresa(conexao, schema);
 				criarEntidadePedidoItem(conexao,schema);
 				
 				bdCriado = true;
@@ -133,28 +135,6 @@ public class CreateDAO {
 		}
 	}
 	
-	private static void criarChaveComposta(Conexao con, String schema, String entidade, 
-			String nomesCamposCompostos ) {
-		
-		boolean chaveExist = false;
-		String sql = "SELECT CONNAME FROM pg_constraint where conname = 'chave_pk'";				
-		ResultSet result = con.query(sql);
-		
-		try {
-			chaveExist = (result.next()?true:false);
-			
-		} catch (SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
-		
-		if (!chaveExist) {
-			sql = "alter table " + schema + "." + entidade + " add constraint chave_pk" +
-					" primary key (" + nomesCamposCompostos + ")";
-				
-		con.query(sql);
-		}
-	}
 		
 	private static void criarEntidadeCliente(Conexao con, String schema) {
 		String entidade = "cliente";
@@ -181,9 +161,35 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "vl_un"	 , "double precision", false, false, null, null);
 		}		
 	}
+	private static void criarEntidadePedido(Conexao con, String schema) {
+		String entidade = "pedido";
+		if (!entidadeExists(con, schema, entidade))		
+			criarTabela(con, entidade, schema);
+		
+		if (entidadeExists(con, schema, entidade)) {
+			criarCampo(con, schema, entidade, "idpedido", "serial", true,  false, null, null);
+			criarCampo(con, schema, entidade, "data_ped"	 , "varchar(100)", false, false, null, null);
+			criarCampo(con, schema, entidade, "idcliente"	 , "int", false, true, "cliente", "idcliente");
+		}
+	}
+			
+			
+	private static void criarEntidadeEmpresa(Conexao con, String schema) {
+		String entidade = "empresa";
+
+		if (!entidadeExists(con, schema, entidade))		
+			criarTabela(con, entidade, schema);
+		
+		if (entidadeExists(con, schema, entidade)) {
+			criarCampo(con, schema, entidade, "idempresa", "serial"	 	 , true,  false, null, null);
+			criarCampo(con, schema, entidade, "nome_fantasia"	 , "varchar(100)", false, false, null, null);
+			criarCampo(con, schema, entidade, "razao_social"	 , "varchar(100)", false, false, null, null);
+		}		
+	}
 	
 	private static void criarEntidadePedidoItem(Conexao con, String schema) {
 		String entidade = "pedidoitem";
+
 		
 		if (!entidadeExists(con, schema, entidade))		
 			criarTabela(con, entidade, schema);
