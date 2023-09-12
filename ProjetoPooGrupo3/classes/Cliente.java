@@ -18,6 +18,16 @@ public class Cliente extends Pessoa {
 		return c;
 	}
 	
+	public static Cliente alterar(Cliente c) {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Insira o Nome: ");
+		c.setNome(input.nextLine());
+		
+		return c;		
+	}
+	
 	
 	public int getIdcliente() {
 		return idcliente;

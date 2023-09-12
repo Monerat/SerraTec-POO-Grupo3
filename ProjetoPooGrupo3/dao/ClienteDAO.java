@@ -49,7 +49,7 @@ public class ClienteDAO {
 	
 	private void prepararSqlAlteracao() {
 		String sql = "update "+ this.schema + ".cliente";	
-		sql += " set nome = ?,";
+		sql += " set nome = ?";
 		sql += " where idcliente = ?";
 		
 		try {

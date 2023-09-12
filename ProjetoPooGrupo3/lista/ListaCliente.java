@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import classes.Cliente;
+import classes.Empresa;
 import conexao.Conexao;
+import contantes.Util;
 import dao.ClienteDAO;
 
 public class ListaCliente {
@@ -57,10 +59,26 @@ public class ListaCliente {
 	}
 	
 	public void imprimirClientes() {
+		ArrayList<String[]> tabela = new ArrayList<>();
+		
+		tabela.add(new String[] {"Id Cliente","Nome"});
 		for (Cliente cliente : clientes) {
-			System.out.println(cliente.getIdcliente());
-			System.out.println(cliente.getNome());
+			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome()});
 		}
+		for (int i = 0; i < tabela.size(); i++) {
+		    String[] linha = tabela.get(i);
+		    if(i == 1) {
+		    	for (int k=0;k<linha.length;k++) {
+		    		System.out.print(Util.LINHAD);
+		    	}
+		    	System.out.println();
+	        }
+		    for (int j = 0; j < linha.length; j++) {
+		        System.out.format("%-30s | ", linha[j]);
+		    }
+		    System.out.println();
+		}
+		
 	}
 	
 	private Cliente dadosCliente(ResultSet tabela) {
