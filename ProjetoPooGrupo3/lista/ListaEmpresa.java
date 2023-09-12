@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import classes.Empresa;
 import conexao.Conexao;
+import contantes.Util;
 import dao.EmpresaDAO;
 
 public class ListaEmpresa {
@@ -21,10 +22,24 @@ public class ListaEmpresa {
 	}
 	
 	public void imprimirEmpresas() {
+		ArrayList<String[]> tabela = new ArrayList<>();
+		
+		tabela.add(new String[] {"Id Empresa","Nome Fantasia","Razão Social"});
 		for (Empresa empresa : empresas) {
-			System.out.println(empresa.getIdEmpresa());
-			System.out.println(empresa.getNome_fantasia());
-			System.out.println(empresa.getRazao_social());
+			tabela.add(new String[] {String.valueOf(empresa.getIdempresa()),empresa.getNome_fantasia(),empresa.getRazao_social()});
+		}
+		for (int i = 0; i < tabela.size(); i++) {
+		    String[] linha = tabela.get(i);
+		    if(i == 1) {
+		    	for (int k=0;k<linha.length;k++) {
+		    		System.out.print(Util.LINHAD);
+		    	}
+		    	System.out.println();
+	        }
+		    for (int j = 0; j < linha.length; j++) {
+		        System.out.format("%-30s | ", linha[j]);
+		    }
+		    System.out.println();
 		}
 	}
 	
@@ -36,7 +51,7 @@ public class ListaEmpresa {
 		Empresa localizado = null;
 		
 		for (Empresa emp : empresas) {
-			if (emp.getIdEmpresa() == idEmpresa) {
+			if (emp.getIdempresa() == idEmpresa) {
 				localizado = emp;
 				break;
 			}
@@ -71,7 +86,7 @@ public class ListaEmpresa {
 		try {
 			emp.setNome_fantasia(tabela.getString("nome_fantasia"));
 			emp.setRazao_social(tabela.getString("razao_social"));
-			emp.setIdEmpresa(tabela.getInt("idempresa"));
+			emp.setIdempresa(tabela.getInt("idempresa"));
 			return emp;
 		} catch (SQLException e) {
 			e.printStackTrace();

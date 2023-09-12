@@ -3,7 +3,7 @@ package classes;
 import java.util.Scanner;
 
 public class Empresa {
-	private int idEmpresa;
+	private int idempresa;
 	private String nome_fantasia;
 	private String razao_social;
 	
@@ -21,11 +21,11 @@ public class Empresa {
 		return e;		
 	}
 	
-	public int getIdEmpresa() {
-		return idEmpresa;
+	public int getIdempresa() {
+		return idempresa;
 	}
-	public void setIdEmpresa(int idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setIdempresa(int idEmpresa) {
+		this.idempresa = idEmpresa;
 	}
 	public String getNome_fantasia() {
 		return nome_fantasia;

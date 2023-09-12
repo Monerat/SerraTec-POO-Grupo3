@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import classes.Cliente;
+import classes.Empresa;
 import conexao.Conexao;
 import dao.ClienteDAO;
 
@@ -54,6 +55,13 @@ public class ListaClientes {
 		} catch (Exception e) {
 			System.err.println(e);
 			e.printStackTrace();
+		}
+	}
+	
+	public void imprimirClientes() {
+		for (Cliente cliente : clientes) {
+			System.out.println(cliente.getIdcliente());
+			System.out.println(cliente.getNome());
 		}
 	}
 	
