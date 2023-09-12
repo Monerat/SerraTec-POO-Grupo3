@@ -1,8 +1,8 @@
 package principal;
 
 
-import java.util.ArrayList;
 
+import lista.ListaEmpresa;
 import classes.*;
 import contantes.Util;
 import dao.*;
@@ -38,6 +38,7 @@ public class Principal {
 			con.conect();
 			
 			opcoes(menu());
+			
 		} else {
 			System.out.println("Ocorreu um problema na criação do banco de dados");
 		}
@@ -47,6 +48,7 @@ public class Principal {
 	public static int  menu() {	
 		System.out.println(Util.LINHAD);
 		System.out.println(Util.CABECALHO);
+		System.out.println(Util.MENU);
 		System.out.println(Util.LINHAD);
 		System.out.println("""
 				
@@ -55,7 +57,7 @@ public class Principal {
 				3) Pedido
 				4) Itens do Pedido
 				5) Produto
-			
+				6) Sair
 				""");
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
@@ -98,24 +100,6 @@ public class Principal {
 			System.out.println("Opção inválidada");
 			break;
 		}
-	}
-	
-
-	public static void cadastrar() {
-		//criar menu cadastrar
-		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
-	}
-	
-	public static void alterar() {
-		//criar menu alterar
-	}
-	
-	public static void excluir() {
-		//criar menu cadastrar
-	}
-	
-	public static void listar() {
-		//criar menu listar
 	}
 
 	public static void opcaoCrudEmpresa(int opcao) {
@@ -216,7 +200,7 @@ public class Principal {
 			opcaoCrudProduto(subMenu());
 			break;
 		case 6:
-			System.out.println("Sair.");
+			System.out.println(Util.MENUFINAL);
 			break;
 		default:
 			System.out.println("Opção inválidada");
@@ -291,7 +275,8 @@ public class Principal {
 	}
 	
 	public static void listarEmpresa() {
-		//criar o listar de cada entidade
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
+		listaEmpresa.imprimirEmpresas();		
 	}
 	
 	public static void listarPedido() {

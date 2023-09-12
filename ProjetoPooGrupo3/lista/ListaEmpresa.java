@@ -20,6 +20,14 @@ public class ListaEmpresa {
 		carregarListaEmpresa();
 	}
 	
+	public void imprimirEmpresas() {
+		for (Empresa empresa : empresas) {
+			System.out.println(empresa.getIdEmpresa());
+			System.out.println(empresa.getNome_fantasia());
+			System.out.println(empresa.getRazao_social());
+		}
+	}
+	
 	public void adicionarEmpresaLista(Empresa emp) {
 		this.empresas.add(emp);
 	}
@@ -28,7 +36,7 @@ public class ListaEmpresa {
 		Empresa localizado = null;
 		
 		for (Empresa emp : empresas) {
-			if (emp.getIdempresa() == idEmpresa) {
+			if (emp.getIdEmpresa() == idEmpresa) {
 				localizado = emp;
 				break;
 			}
@@ -63,7 +71,7 @@ public class ListaEmpresa {
 		try {
 			emp.setNome_fantasia(tabela.getString("nome_fantasia"));
 			emp.setRazao_social(tabela.getString("razao_social"));
-			emp.setIdempresa(tabela.getInt("idempresa"));
+			emp.setIdEmpresa(tabela.getInt("idempresa"));
 			return emp;
 		} catch (SQLException e) {
 			e.printStackTrace();

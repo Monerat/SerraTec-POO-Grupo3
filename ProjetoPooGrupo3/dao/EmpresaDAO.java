@@ -72,7 +72,7 @@ public class EmpresaDAO {
 		try {
 			pAlteracao.setString(1, empresa.getNome_fantasia());
 			pAlteracao.setString(2, empresa.getRazao_social());
-			pAlteracao.setInt(3, empresa.getIdempresa());
+			pAlteracao.setInt(3, empresa.getIdEmpresa());
 			
 			return pAlteracao.executeUpdate();
 			
@@ -101,7 +101,7 @@ public class EmpresaDAO {
 	
 	public int excluirEmpresa(Empresa empresa) {
 		try {
-			pExclusao.setInt(1, empresa.getIdempresa());
+			pExclusao.setInt(1, empresa.getIdEmpresa());
 			
 			return pExclusao.executeUpdate();
 		} catch  (Exception e) {
