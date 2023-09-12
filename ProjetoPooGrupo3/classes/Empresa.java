@@ -21,6 +21,18 @@ public class Empresa {
 		return e;		
 	}
 	
+	public static Empresa alterar(Empresa empre) {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Insira o Nome Fantasia: ");
+		empre.setNome_fantasia(input.nextLine());
+		System.out.println("Insira a Razão Social: ");
+		empre.setRazao_social(input.nextLine());
+		
+		return empre;		
+	}
+	
 	public int getIdempresa() {
 		return idempresa;
 	}

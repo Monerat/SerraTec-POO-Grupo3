@@ -57,8 +57,8 @@ public class EmpresaDAO {
 	private void prepararSqlAlteracao() {
 		String sql = "UPDATE "+ this.schema + ".empresa";	
 		sql += " set nome_fantasia = ?,";
-		sql += " razao_social = ?,";
-		sql += " where idempresa = ?";
+		sql += " razao_social = ?";
+		sql += " WHERE idempresa = ?";
 		
 		try {
 			this.pAlteracao =  conexao.getC().prepareStatement(sql);

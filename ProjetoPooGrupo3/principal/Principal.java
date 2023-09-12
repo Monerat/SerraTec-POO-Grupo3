@@ -235,7 +235,9 @@ public class Principal {
 	}
 	
 	public static void alterarEmpresa() {
-		//criar o Alterar o cadastro
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
+		listaEmpresa.imprimirEmpresas();
+		EmpresaDML.alterarEmpresa(con, SCHEMA, Empresa.alterar(listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Id da Empresa que deseja alterar:"))));
 	}
 	
 	public static void alterarPedido() {
@@ -255,7 +257,9 @@ public class Principal {
 	}
 	
 	public static void excluirEmpresa() {
-		//criar o excluir o cadastro
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
+		listaEmpresa.imprimirEmpresas();
+		EmpresaDML.excluirEmpresa(con, SCHEMA, listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Id da Empresa que deseja excluir:")));
 	}
 	
 	public static void excluirPedido() {
