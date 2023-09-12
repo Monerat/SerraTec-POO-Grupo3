@@ -9,13 +9,13 @@ import classes.Empresa;
 import conexao.Conexao;
 import dao.ClienteDAO;
 
-public class ListaClientes {
+public class ListaCliente {
 	private Conexao con;
 	private String schema;
 	
 	ArrayList<Cliente> clientes = new ArrayList<>();
 	
-	public ListaClientes (Conexao con, String schema) {
+	public ListaCliente (Conexao con, String schema) {
 		this.con = con;
 		this.schema = schema;
 		
