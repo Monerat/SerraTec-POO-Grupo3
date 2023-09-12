@@ -56,8 +56,6 @@ public class Conexao {
 			ex.printStackTrace();
 		}
 	}
-	
-	@SuppressWarnings("exports")
 	public ResultSet query(String query){
 		try {
 			return getStatment().executeQuery(query);
@@ -97,21 +95,19 @@ public class Conexao {
 		this.senha = senha;
 	}
 
-	@SuppressWarnings("exports")
 	public Connection getC() {
 		return c;
 	}
 
-	public void setC(@SuppressWarnings("exports") Connection c) {
+	public void setC( Connection c) {
 		this.c = c;
 	}
 
-	@SuppressWarnings("exports")
 	public Statement getStatment() {
 		return statment;
 	}
 
-	public void setStatment(@SuppressWarnings("exports") Statement statment) {
+	public void setStatment( Statement statment) {
 		this.statment = statment;
 	}
 

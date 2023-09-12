@@ -2,10 +2,8 @@ package lista;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import classes.Cliente;
-import classes.Empresa;
 import conexao.Conexao;
 import dao.ClienteDAO;
 
