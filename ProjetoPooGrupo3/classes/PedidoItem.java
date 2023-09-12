@@ -21,6 +21,22 @@ import java.util.Scanner;
 		return pdi;
 		
 	}
+	
+	public static PedidoItem alterar(PedidoItem pi) {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Insira uma nova quantidade: ");
+		pi.setQtd(input.nextDouble());
+		System.out.println("Insira o novo ID pedido: ");
+		pi.setIdpedido(input.nextInt());
+		System.out.println("Insira o novo ID produto: ");
+		pi.setIdproduto(input.nextInt());
+		System.out.println("Insira o novo ID empresa: ");
+		pi.setIdempresa(input.nextInt());
+		
+		return pi;		
+	}
 
 	public int getIdpedidoitem() {
 		return idpedidoitem;

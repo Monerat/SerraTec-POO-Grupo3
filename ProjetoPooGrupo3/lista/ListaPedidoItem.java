@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import classes.Empresa;
 import classes.PedidoItem;
 import conexao.Conexao;
+import contantes.Util;
 import dao.PedidoItemDAO;
 
 public class ListaPedidoItem {
@@ -21,6 +23,29 @@ public class ListaPedidoItem {
 		carregarListaPedidoItem();
 	}
 	
+	public void imprimirPedidoItens() {
+		ArrayList<String[]> tabela = new ArrayList<>();
+		
+		tabela.add(new String[] {"Id Pedido Item","Quantidade","Id Pedido", "Id Produto", "Id Empresa"});
+		for (PedidoItem pedidoItem : pedidoItens) {
+			tabela.add(new String[] {String.valueOf(pedidoItem.getIdpedidoitem()), String.valueOf(pedidoItem.getQtd()), String.valueOf(pedidoItem.getIdpedido()), String.valueOf(pedidoItem.getIdproduto()), String.valueOf(pedidoItem.getIdempresa())});
+		}
+		for (int i = 0; i < tabela.size(); i++) {
+		    String[] linha = tabela.get(i);
+		    if(i == 1) {
+		    	for (int k=0;k<linha.length;k++) {
+		    		System.out.print(Util.LINHAD);
+		    	}
+		    	System.out.println();
+	        }
+		    for (int j = 0; j < linha.length; j++) {
+		        System.out.format("%-30s | ", linha[j]);
+		    }
+		    System.out.println();
+		}
+		
+	}
+		
 	public void adicionarPedidoItemLista(PedidoItem pdi) {
 		this.pedidoItens.add(pdi);
 	}
@@ -61,7 +86,7 @@ public class ListaPedidoItem {
 		PedidoItem pdi = new PedidoItem();
 		
 		try {
-			pdi.setQtd(tabela.getDouble("Quantidade"));
+			pdi.setQtd(tabela.getDouble("qtd"));
 			pdi.setIdpedidoitem(tabela.getInt("idpedidoitem"));
 			pdi.setIdproduto(tabela.getInt("idproduto"));
 			pdi.setIdpedido(tabela.getInt("idpedido"));

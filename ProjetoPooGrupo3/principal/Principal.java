@@ -2,7 +2,8 @@ package principal;
 
 
 
-import lista.ListaEmpresa;
+
+import lista.*;
 import classes.*;
 import contantes.Util;
 import dao.*;
@@ -245,7 +246,9 @@ public class Principal {
 	}
 	
 	public static void alterarPedidoItem() {
-		//criar o Alterar o cadastro
+		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
+		listaPedidoItem.imprimirPedidoItens();
+		PedidoItemDML.alterarPedidoItem(con, SCHEMA, PedidoItem.alterar(listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja alterar:"))));
 	}
 	
 	public static void alterarProduto() {
@@ -267,7 +270,9 @@ public class Principal {
 	}
 	
 	public static void excluirPedidoItem() {
-		//criar o excluir o cadastro
+		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
+		listaPedidoItem.imprimirPedidoItens();
+		PedidoItemDML.excluirPedidoItem(con, SCHEMA, listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja excluir:")));
 	}
 	
 	public static void excluirProduto() {
@@ -288,7 +293,8 @@ public class Principal {
 	}
 	
 	public static void listarPedidoItem() {
-		//criar o listar de cada entidade
+		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
+		listaPedidoItem.imprimirPedidoItens();		
 	}
 	
 	public static void listarProduto() {
