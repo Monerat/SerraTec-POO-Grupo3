@@ -21,11 +21,23 @@ public class Empresa {
 		return e;		
 	}
 	
+	public static Empresa alterar(Empresa empre) {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Insira o Nome Fantasia: ");
+		empre.setNome_fantasia(input.nextLine());
+		System.out.println("Insira a Razão Social: ");
+		empre.setRazao_social(input.nextLine());
+		
+		return empre;		
+	}
+	
 	public int getIdempresa() {
 		return idempresa;
 	}
-	public void setIdempresa(int idempresa) {
-		this.idempresa = idempresa;
+	public void setIdempresa(int idEmpresa) {
+		this.idempresa = idEmpresa;
 	}
 	public String getNome_fantasia() {
 		return nome_fantasia;

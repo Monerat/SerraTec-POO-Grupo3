@@ -9,6 +9,7 @@ public class Produto {
 	private double vl_un;
 	
 	public static Produto cadastrar() {
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		Produto p = new Produto();
 		

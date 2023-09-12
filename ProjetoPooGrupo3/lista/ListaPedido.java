@@ -8,14 +8,14 @@ import classes.Pedido;
 import conexao.Conexao;
 import dao.PedidoDAO;
 
-public class ListaPedidos {
+public class ListaPedido {
 	private Conexao con;
 	private String schema;
 	
 	ArrayList<Pedido> pedidos = new ArrayList<>();
 	
 	
-	public ListaPedidos (Conexao con, String schema) {
+	public ListaPedido (Conexao con, String schema) {
 		this.con = con;
 		this.schema = schema;
 		

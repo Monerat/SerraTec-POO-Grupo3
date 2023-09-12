@@ -3,6 +3,8 @@ package principal;
 
 
 
+
+import lista.*;
 import classes.*;
 import contantes.Util;
 import dao.*;
@@ -18,7 +20,7 @@ public class Principal {
 	public static final String SCHEMA = "sistema";
 	public static final String LOCAL = "localhost";
 	public static final String USUARIO = "postgres";
-	public static final String SENHA = "3791";
+	public static final String SENHA = "123456";
 	public static final String PORTA = "5432";
 	public static final String BD = "PostgreSql";
 	
@@ -38,6 +40,7 @@ public class Principal {
 			con.conect();
 			
 			opcoes(menu());
+			
 		} else {
 			System.out.println("Ocorreu um problema na criação do banco de dados");
 		}
@@ -47,6 +50,7 @@ public class Principal {
 	public static int  menu() {	
 		System.out.println(Util.LINHAD);
 		System.out.println(Util.CABECALHO);
+		System.out.println(Util.MENU);
 		System.out.println(Util.LINHAD);
 		System.out.println("""
 				
@@ -55,7 +59,7 @@ public class Principal {
 				3) Pedido
 				4) Itens do Pedido
 				5) Produto
-			
+				6) Sair
 				""");
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
@@ -98,24 +102,6 @@ public class Principal {
 			System.out.println("Opção inválidada");
 			break;
 		}
-	}
-	
-
-	public static void cadastrar() {
-		//criar menu cadastrar
-		ClienteDML.gravarCliente(con, SCHEMA, Cliente.cadastrar());
-	}
-	
-	public static void alterar() {
-		//criar menu alterar
-	}
-	
-	public static void excluir() {
-		//criar menu cadastrar
-	}
-	
-	public static void listar() {
-		//criar menu listar
 	}
 
 	public static void opcaoCrudEmpresa(int opcao) {
@@ -216,7 +202,7 @@ public class Principal {
 			opcaoCrudProduto(subMenu());
 			break;
 		case 6:
-			System.out.println("Sair.");
+			System.out.println(Util.MENUFINAL);
 			break;
 		default:
 			System.out.println("Opção inválidada");
@@ -251,7 +237,9 @@ public class Principal {
 	}
 	
 	public static void alterarEmpresa() {
-		//criar o Alterar o cadastro
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
+		listaEmpresa.imprimirEmpresas();
+		EmpresaDML.alterarEmpresa(con, SCHEMA, Empresa.alterar(listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Id da Empresa que deseja alterar:"))));
 	}
 	
 	public static void alterarPedido() {
@@ -259,7 +247,9 @@ public class Principal {
 	}
 	
 	public static void alterarPedidoItem() {
-		//criar o Alterar o cadastro
+		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
+		listaPedidoItem.imprimirPedidoItens();
+		PedidoItemDML.alterarPedidoItem(con, SCHEMA, PedidoItem.alterar(listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja alterar:"))));
 	}
 	
 	public static void alterarProduto() {
@@ -271,7 +261,9 @@ public class Principal {
 	}
 	
 	public static void excluirEmpresa() {
-		//criar o excluir o cadastro
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
+		listaEmpresa.imprimirEmpresas();
+		EmpresaDML.excluirEmpresa(con, SCHEMA, listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Id da Empresa que deseja excluir:")));
 	}
 	
 	public static void excluirPedido() {
@@ -279,7 +271,9 @@ public class Principal {
 	}
 	
 	public static void excluirPedidoItem() {
-		//criar o excluir o cadastro
+		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
+		listaPedidoItem.imprimirPedidoItens();
+		PedidoItemDML.excluirPedidoItem(con, SCHEMA, listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja excluir:")));
 	}
 	
 	public static void excluirProduto() {
@@ -291,7 +285,8 @@ public class Principal {
 	}
 	
 	public static void listarEmpresa() {
-		//criar o listar de cada entidade
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
+		listaEmpresa.imprimirEmpresas();		
 	}
 	
 	public static void listarPedido() {
@@ -299,7 +294,8 @@ public class Principal {
 	}
 	
 	public static void listarPedidoItem() {
-		//criar o listar de cada entidade
+		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
+		listaPedidoItem.imprimirPedidoItens();		
 	}
 	
 	public static void listarProduto() {

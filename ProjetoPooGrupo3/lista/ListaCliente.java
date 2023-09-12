@@ -7,13 +7,13 @@ import classes.Cliente;
 import conexao.Conexao;
 import dao.ClienteDAO;
 
-public class ListaClientes {
+public class ListaCliente {
 	private Conexao con;
 	private String schema;
 	
 	ArrayList<Cliente> clientes = new ArrayList<>();
 	
-	public ListaClientes (Conexao con, String schema) {
+	public ListaCliente (Conexao con, String schema) {
 		this.con = con;
 		this.schema = schema;
 		
@@ -53,6 +53,13 @@ public class ListaClientes {
 		} catch (Exception e) {
 			System.err.println(e);
 			e.printStackTrace();
+		}
+	}
+	
+	public void imprimirClientes() {
+		for (Cliente cliente : clientes) {
+			System.out.println(cliente.getIdcliente());
+			System.out.println(cliente.getNome());
 		}
 	}
 	
