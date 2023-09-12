@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import classes.Cliente;
@@ -112,7 +111,6 @@ public class ClienteDAO {
 		}
 	}
 	
-	@SuppressWarnings("exports")
 	public ResultSet carregarClientes() {
 		ResultSet tabela;				
 		String sql = "select * from " + this.schema + ".cliente order by idcliente";
