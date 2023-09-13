@@ -59,7 +59,8 @@ public class Principal {
 				3) Pedido
 				4) Itens do Pedido
 				5) Produto
-				6) Sair
+				6) Produto-Empresa
+				7) Sair
 				""");
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
@@ -184,6 +185,26 @@ public class Principal {
 		}
 	}
 	
+	public static void opcaoCrudProdEmpr(int opcao) {
+		switch (opcao) {
+		case 1:
+			cadastrarProdEmpr();
+			break;
+		case 2:
+			alterarProdEmpr();
+			break;
+		case 3:
+			excluirProdEmpr();
+			break;
+		case 4:
+			listarProdEmpr();
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
+	
 	public static int opcoes(int opcao) {
 		
 			switch (opcao) {
@@ -203,6 +224,9 @@ public class Principal {
 				opcaoCrudProduto(subMenu());
 				break;
 			case 6:
+				opcaoCrudProdEmpr(subMenu());
+				break;
+			case 7:
 				System.out.println(Util.MENUFINAL);
 				break;
 			default:
@@ -231,7 +255,10 @@ public class Principal {
 	
 	public static void cadastrarProduto() {
 		ProdutoDML.gravarProduto(con, SCHEMA, Produto.cadastrar());
-
+	}
+	
+	public static void cadastrarProdEmpr() {
+		ProdEmprDML.gravarProdEmpr(con, SCHEMA, ProdEmpr.cadastrar(con,SCHEMA));
 	}
 	
 	public static void alterarCliente() {
@@ -262,6 +289,12 @@ public class Principal {
 		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
 		listaProduto.imprimirProdutos();
 		ProdutoDML.alterarProduto(con, SCHEMA, Produto.alterar(listaProduto.localizarProduto(Util.validarInteiro("Informe o Id da Produto que deseja alterar:"))));
+	}
+	
+	public static void alterarProdEmpr() {
+		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
+		listaProdEmpr.imprimirProdEmpr();
+		ProdEmprDML.alterarProdEmpr(con, SCHEMA, listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Id do Produto-Empresa que deseja alterar:")));
 	}
 	
 	public static void excluirCliente() {
@@ -295,6 +328,12 @@ public class Principal {
 		ProdutoDML.excluirProduto(con, SCHEMA, listaProduto.localizarProduto(Util.validarInteiro("Informe o Id do Produto que deseja excluir:")));
 	}
 	
+	public static void excluirProdEmpr() {
+		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
+		listaProdEmpr.imprimirProdEmpr();
+		ProdEmprDML.excluirProdEmpr(con, SCHEMA, listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Id do Produto-Empresa que deseja excluir:")));
+	}
+	
 	public static void listarCliente() {
 		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
 		listaCliente.imprimirClientes();
@@ -318,6 +357,10 @@ public class Principal {
 	public static void listarProduto() {
 		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
 		listaProduto.imprimirProdutos();
+	}
+	public static void listarProdEmpr() {
+		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
+		listaProdEmpr.imprimirProdEmpr();
 	}
 	
 }

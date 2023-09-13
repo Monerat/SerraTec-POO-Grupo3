@@ -1,6 +1,6 @@
 package dao;
 
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 
 import classes.Cliente;
