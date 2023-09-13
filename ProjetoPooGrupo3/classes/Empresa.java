@@ -1,6 +1,6 @@
 package classes;
 
-import java.util.Scanner;
+import contantes.Util;
 
 public class Empresa {
 	private int idempresa;
@@ -9,26 +9,18 @@ public class Empresa {
 	
 
 	public static Empresa cadastrar() {
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
 		Empresa e = new Empresa();
 		
-		System.out.println("Insira o Nome Fantasia: ");
-		e.setNome_fantasia(input.nextLine());
-		System.out.println("Insira a Razão Social: ");
-		e.setRazao_social(input.nextLine());
+		e.setNome_fantasia(Util.validarString("Insira o Nome Fantasia: "));
+		e.setRazao_social(Util.validarString("Insira a Razão Social: "));
 		
 		return e;		
 	}
 	
 	public static Empresa alterar(Empresa empre) {
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Insira o Nome Fantasia: ");
-		empre.setNome_fantasia(input.nextLine());
-		System.out.println("Insira a Razão Social: ");
-		empre.setRazao_social(input.nextLine());
+		empre.setNome_fantasia(Util.validarString("Insira o Nome Fantasia: "));
+		empre.setRazao_social(Util.validarString("Insira a Razão Social: "));
 		
 		return empre;		
 	}

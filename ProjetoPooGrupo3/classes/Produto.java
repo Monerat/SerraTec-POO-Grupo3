@@ -1,6 +1,6 @@
 package classes;
 
-import java.util.Scanner;
+import contantes.Util;
 
 public class Produto {
 	private int idproduto;
@@ -8,26 +8,18 @@ public class Produto {
 	private String descricao;
 	
 	public static Produto cadastrar() {
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
-		Produto p = new Produto();
 		
-		System.out.println("Insira o nome Produto: ");
-		p.setNome_prod(input.nextLine());
-		System.out.println("Insira o nome Descrição do Produto: ");
-		p.setDescricao(input.nextLine());
+		Produto p = new Produto();
+		p.setNome_prod(Util.validarString("Insira o nome Produto: "));
+		p.setDescricao(Util.validarString("Insira a Descrição do Produto: "));
 		
 		return p;
 	}
 	
 	public static Produto alterar(Produto prod) {
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Insira o nome Produto: ");
-		prod.setNome_prod(input.nextLine());
-		System.out.println("Insira o nome Descrição do Produto: ");
-		prod.setDescricao(input.nextLine());
+		prod.setNome_prod(Util.validarString("Insira o nome Produto: "));
+		prod.setDescricao(Util.validarString("Insira a Descrição do Produto: "));
 		
 		return prod;
 	}

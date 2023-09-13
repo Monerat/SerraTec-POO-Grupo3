@@ -3,6 +3,7 @@ package contantes;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Util {
 	public static Scanner in = new Scanner(System.in);
@@ -95,15 +96,17 @@ public class Util {
 		return numero;
 	}
 	
-	public static double validarDouble() {
+	public static double validarDouble(String mensagem) {
 		String s;
 		double numero = 0.0;
 		boolean validado = false;
+		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		
 		do {
 			try {
-				s = in.next();			
+				System.out.println(mensagem);
+				s = in.nextLine();			
 				numero = Double.parseDouble(s);
 				validado = true;
 			} catch (Exception e) {
@@ -111,8 +114,93 @@ public class Util {
 			}
 		} while (!validado);
 		
-		in.close();
+		//in.close();
 		
 		return numero;
 	}
-}
+
+    public static String validarString(String mensagem) {
+    	boolean validado = false;
+    	String string = null;
+    	Pattern p = Pattern.compile("^[a-zA-Zà-úÀ-Ú0-9.,ç]*$");
+    	
+    	do {
+    		System.out.println(mensagem);
+    		string = in.nextLine();
+
+    		try {
+    			if (string.trim().isEmpty()) {
+    				throw new RuntimeException("O campo não pode conter somente caracteres vazios!\n");
+    			} else if (!p.matcher(string).find()) {
+    				throw new RuntimeException("O campo não pode conter caracteres especiais!\n");
+    			} else {
+    				validado = true;
+    			}
+    		} catch (RuntimeException e) {
+    			System.out.println(e.getMessage());
+    		}
+    	} while (!validado);
+    	
+    	return string;
+    }
+    
+    public static String validarCPF(String mensagem) {
+    	Pattern p = Pattern.compile("[0-9]{11}");
+    	String cpf = "00000000000";
+    	boolean valido = p.matcher(cpf).matches();
+    	
+    	do {
+    		System.out.println(mensagem);
+    		cpf = in.nextLine();
+    		
+    		// Valida o CPF
+    		valido = p.matcher(cpf).matches();
+
+    		if (!valido) {
+    			System.out.println("CPF inválido.");
+    		}
+    	} while (!valido);
+    	
+    	return cpf;
+    }
+    
+    public static String validarTelefone(String mensagem) {
+    	Pattern p = Pattern.compile("^([+0-9]{3}|00)?[0-9]{9,11}$");
+    	String telefone = "+5511999999999";
+    	boolean valido = p.matcher(telefone).matches();
+    	
+    	do {
+    		System.out.println(mensagem);
+    		telefone = in.nextLine();
+
+    		// Valida o Telefone
+    		valido = p.matcher(telefone).matches();
+
+    		if (!valido) {
+    			System.out.println("Telefone inválido.");
+    		}
+    	} while (!valido);
+    	
+    	return telefone;
+    }
+    
+    public static String validarEmail(String mensagem) {
+    	Pattern p = Pattern.compile("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+    	String email = "meuemail@gmail.com";
+    	boolean valido = p.matcher(email).matches();
+    	
+    	do {
+    		System.out.println("Digite seu email:");
+    		email = in.nextLine();
+
+    		// Valida o email
+    		valido = p.matcher(email).matches();
+
+    		if (!valido) {
+    			System.out.println("Email inválido.");
+    		}
+    	} while (!valido);
+    	
+    	return email;
+    }
+ }

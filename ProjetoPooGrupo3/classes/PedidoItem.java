@@ -1,9 +1,8 @@
 package classes;
 
-import java.util.Scanner;
-
 import conexao.Conexao;
 import lista.ListaProdEmpr;
+import contantes.Util;
 import lista.ListaPedido;
 
 	public class PedidoItem {
@@ -14,48 +13,39 @@ import lista.ListaPedido;
 
 	public static PedidoItem cadastrar(Conexao con, String schema) {
 
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
 		PedidoItem pdi = new PedidoItem();
 		
 		ListaPedido listaPedidos = new ListaPedido(con,schema);
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,schema);
 		
 		listaPedidos.imprimirPedidos();
-		System.out.println("Insira o Id Pedido: ");
-		pdi.setIdpedido(input.nextInt());
+		pdi.setIdpedido(Util.validarInteiro("Insira o Id Pedido: "));
 		System.out.println();
 		
 		listaProdEmpr.imprimirProdEmpr();
-		System.out.println("Insira o Id Produto-Empresa: ");
-		pdi.setIdprodempr(input.nextInt());
+		pdi.setIdprodempr(Util.validarInteiro("Insira o Id Produto-Empresa: "));
 		System.out.println();
-			
-		System.out.println("Insira a quantidade: ");
-		pdi.setQtd(input.nextDouble());
 		
+		pdi.setQtd(Util.validarDouble("Insira a quantidade: "));
+
 		return pdi;
 	}
 	
 	public static PedidoItem alterar(Conexao con, String schema, PedidoItem pi) {
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
-		
+				
 		ListaPedido listaPedidos = new ListaPedido(con,schema);
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,schema);
 		
 		listaPedidos.imprimirPedidos();
-		System.out.println("Insira o novo ID pedido: ");
-		pi.setIdpedido(input.nextInt());
+		pi.setIdpedido(Util.validarInteiro("Insira o Id Pedido: "));
 		System.out.println();
 		
 		listaProdEmpr.imprimirProdEmpr();
-		System.out.println("Insira o Id Produto-Empresa: ");
-		pi.setIdprodempr(input.nextInt());
+		pi.setIdprodempr(Util.validarInteiro("Insira o Id Produto-Empresa: "));
 		System.out.println();
 		
-		System.out.println("Insira uma nova quantidade: ");
-		pi.setQtd(input.nextDouble());
+		pi.setQtd(Util.validarDouble("Insira a quantidade: "));
+		System.out.println();
 		
 		return pi;
 	}

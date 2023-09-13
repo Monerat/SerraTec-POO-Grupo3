@@ -79,7 +79,6 @@ public class Principal {
 				2) Alterar
 				3) Excluir
 				4) Listar
-				5) Sair
 				""");
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
@@ -245,7 +244,7 @@ public class Principal {
 	}
 	
 	public static void cadastrarPedido() {
-		PedidoDML.gravarPedido(con, SCHEMA, Pedido.cadastrar());
+		PedidoDML.gravarPedido(con, SCHEMA, Pedido.cadastrar(con,SCHEMA));
 	}
 	
 	public static void cadastrarPedidoItem() {
@@ -276,7 +275,7 @@ public class Principal {
 	public static void alterarPedido() {
 		ListaPedido listaPedido = new ListaPedido(con,SCHEMA);
 		listaPedido.imprimirPedidos();
-		PedidoDML.alterarPedido(con, SCHEMA, Pedido.alterar(listaPedido.localizarPedido(Util.validarInteiro("Informe o Id da Pedido que deseja alterar:"))));
+		PedidoDML.alterarPedido(con, SCHEMA, Pedido.alterar(con,SCHEMA,listaPedido.localizarPedido(Util.validarInteiro("Informe o Id da Pedido que deseja alterar:"))));
 	}
 	
 	public static void alterarPedidoItem() {
