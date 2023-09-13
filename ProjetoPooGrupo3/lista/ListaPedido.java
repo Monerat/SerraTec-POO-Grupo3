@@ -4,8 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import classes.Empresa;
 import classes.Pedido;
 import conexao.Conexao;
+import contantes.Util;
 import dao.PedidoDAO;
 
 public class ListaPedido {
@@ -20,6 +24,30 @@ public class ListaPedido {
 		this.schema = schema;
 		
 		carregarListaPedidos();
+	}
+	
+	public void imprimirPedidos() {
+		ArrayList<String[]> tabela = new ArrayList<>();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String aux;
+		tabela.add(new String[] {"Id Pedido","Data do pedido","Id Cliente"});
+		for (Pedido pedido : pedidos) {
+			aux = Util.validaDataTransString(pedido.getData_ped());
+			tabela.add(new String[] {String.valueOf(pedido.getIdpedido()),aux,String.valueOf(pedido.getIdcliente())});
+		}
+		for (int i = 0; i < tabela.size(); i++) {
+		    String[] linha = tabela.get(i);
+		    if(i == 1) {
+		    	for (int k=0;k<linha.length;k++) {
+		    		System.out.print(Util.LINHAD);
+		    	}
+		    	System.out.println();
+	        }
+		    for (int j = 0; j < linha.length; j++) {
+		        System.out.format("%-30s | ", linha[j]);
+		    }
+		    System.out.println();
+		}
 	}
 	
 	public void adicionarPedidoLista(Pedido p) {
@@ -64,7 +92,7 @@ public class ListaPedido {
 		try {
 			p.setIdpedido(tabela.getInt("idpedido"));
 			p.setIdcliente(tabela.getInt("idcliente"));
-			p.setData_ped(LocalDate.parse("data_ped"));
+			p.setData_ped(tabela.getDate(("data_ped")).toLocalDate());
 			return p;
 		} catch (SQLException e) {
 			e.printStackTrace();

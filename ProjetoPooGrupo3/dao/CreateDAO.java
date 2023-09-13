@@ -168,7 +168,7 @@ public class CreateDAO {
 		
 		if (entidadeExists(con, schema, entidade)) {
 			criarCampo(con, schema, entidade, "idpedido", "serial", true,  false, null, null);
-			criarCampo(con, schema, entidade, "data_ped"	 , "varchar(100)", false, false, null, null);
+			criarCampo(con, schema, entidade, "data_ped"	 , "Date", false, false, null, null);
 			criarCampo(con, schema, entidade, "idcliente"	 , "int", false, true, "cliente", "idcliente");
 		}
 	}

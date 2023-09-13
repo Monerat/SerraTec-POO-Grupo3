@@ -2,6 +2,11 @@ package classes;
 
 import java.util.Scanner;
 
+import conexao.Conexao;
+import lista.ListaEmpresa;
+import lista.ListaProduto;
+import lista.ListaPedido;
+
 	public class PedidoItem {
 	private int idpedidoitem;
 	private double qtd;
@@ -22,22 +27,32 @@ import java.util.Scanner;
 		
 	}
 	
-	public static PedidoItem alterar(PedidoItem pi) {
+	public static PedidoItem alterar(Conexao con, String schema, PedidoItem pi) {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Insira uma nova quantidade: ");
-		pi.setQtd(input.nextDouble());
+		ListaPedido listaPedidos = new ListaPedido(con,schema);
+		ListaProduto listaProdutos = new ListaProduto(con,schema);
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,schema);
+		
+		listaPedidos.imprimirPedidos();
 		System.out.println("Insira o novo ID pedido: ");
 		pi.setIdpedido(input.nextInt());
+		
+		listaProdutos.imprimirProdutos();
 		System.out.println("Insira o novo ID produto: ");
 		pi.setIdproduto(input.nextInt());
+		
+		listaEmpresa.imprimirEmpresas();
 		System.out.println("Insira o novo ID empresa: ");
 		pi.setIdempresa(input.nextInt());
 		
-		return pi;		
+		System.out.println("Insira uma nova quantidade: ");
+		pi.setQtd(input.nextDouble());
+		
+		return pi;
 	}
-
+	
 	public int getIdpedidoitem() {
 		return idpedidoitem;
 	}

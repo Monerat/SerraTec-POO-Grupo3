@@ -1,16 +1,11 @@
 package principal;
 
-
-
-
-
 import lista.*;
 import classes.*;
 import contantes.Util;
 import dao.*;
 import dml.*;
 import conexao.*;
-
 
 public class Principal {
 	
@@ -26,7 +21,6 @@ public class Principal {
 	
 	
 	public static void main(String[] args) {
-				
 		dadosCon.setBanco(BANCO);
 		dadosCon.setLocal(LOCAL);
 		dadosCon.setUser(USUARIO);
@@ -249,7 +243,7 @@ public class Principal {
 	public static void alterarPedidoItem() {
 		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
 		listaPedidoItem.imprimirPedidoItens();
-		PedidoItemDML.alterarPedidoItem(con, SCHEMA, PedidoItem.alterar(listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja alterar:"))));
+		PedidoItemDML.alterarPedidoItem(con, SCHEMA, PedidoItem.alterar(con,SCHEMA,listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja alterar:"))));
 	}
 	
 	public static void alterarProduto() {
@@ -290,7 +284,8 @@ public class Principal {
 	}
 	
 	public static void listarPedido() {
-		//criar o listar de cada entidade
+		ListaPedido listaPedido = new ListaPedido(con,SCHEMA);
+		listaPedido.imprimirPedidos();
 	}
 	
 	public static void listarPedidoItem() {
@@ -299,7 +294,8 @@ public class Principal {
 	}
 	
 	public static void listarProduto() {
-		//criar o listar de cada entidade
+		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
+		listaProduto.imprimirProdutos();
 	}
 	
 }

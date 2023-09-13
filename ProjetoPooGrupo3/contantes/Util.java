@@ -38,7 +38,7 @@ public class Util {
 	}
 	
 	public static LocalDate validarData(String mensagem) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataConvertida = null;
 		String sData; 
 		boolean dataValidada = false;
@@ -51,6 +51,23 @@ public class Util {
 				dataConvertida = LocalDate.parse(sData, dtf);   
 				dataValidada = true;
 				return dataConvertida;
+			} catch (Exception e) {
+				System.out.println("Data inválida");	
+				return null;
+			}
+		} while (!dataValidada);
+	}
+	
+	public static String validaDataTransString(LocalDate local) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String sData; 
+		boolean dataValidada = false;
+		
+		do {			
+			try {
+				sData = local.format(dtf);
+				dataValidada = true;
+				return sData;
 			} catch (Exception e) {
 				System.out.println("Data inválida");	
 				return null;

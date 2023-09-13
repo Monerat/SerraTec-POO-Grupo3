@@ -24,7 +24,7 @@ public class PedidoDAO {
 	
 	private void prepararSqlInclusao() {
 		String sql = "INSERT INTO "+ this.schema + ".pedido";	
-		sql += " (data_ped, idpedido)";
+		sql += " (data_ped, idcliente)";
 		sql += " VALUES ";
 		sql += " (?, ?)";
 		
@@ -73,7 +73,7 @@ public class PedidoDAO {
 		try {
 			pAlteracao.setDate(1, Date.valueOf(pedido.getData_ped()));
 			pAlteracao.setInt(2, pedido.getIdcliente());
-			pAlteracao.setInt(4, pedido.getIdpedido());
+			pAlteracao.setInt(3, pedido.getIdpedido());
 			
 			return pAlteracao.executeUpdate();
 			
