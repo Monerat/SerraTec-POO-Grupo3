@@ -28,7 +28,6 @@ public class ListaPedido {
 	
 	public void imprimirPedidos() {
 		ArrayList<String[]> tabela = new ArrayList<>();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String aux;
 		tabela.add(new String[] {"Id Pedido","Data do pedido","Id Cliente"});
 		for (Pedido pedido : pedidos) {
