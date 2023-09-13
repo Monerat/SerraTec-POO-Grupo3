@@ -38,7 +38,7 @@ public class Util {
 	}
 	
 	public static LocalDate validarData(String mensagem) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataConvertida = null;
 		String sData; 
 		boolean dataValidada = false;

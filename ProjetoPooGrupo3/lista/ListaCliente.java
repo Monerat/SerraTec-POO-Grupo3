@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import classes.Cliente;
-import classes.Empresa;
 import conexao.Conexao;
 import contantes.Util;
 import dao.ClienteDAO;
@@ -61,9 +60,9 @@ public class ListaCliente {
 	public void imprimirClientes() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Cliente","Nome"});
+		tabela.add(new String[] {"Id Cliente","Nome", "CPF", "Telefone", "Endereco", "Email", "Data de Nascimento"});
 		for (Cliente cliente : clientes) {
-			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome()});
+			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome(),cliente.getCpf(), cliente.getTelefone(), cliente.getEndereco(), cliente.getEmail(), cliente.getData_nasc().toString()});
 		}
 		for (int i = 0; i < tabela.size(); i++) {
 		    String[] linha = tabela.get(i);
@@ -86,6 +85,11 @@ public class ListaCliente {
 		
 		try {
 			c.setNome(tabela.getString("nome"));
+			c.setCpf(tabela.getString("cpf"));
+			c.setTelefone(tabela.getString("telefone"));
+			c.setEndereco(tabela.getString("endereco"));
+			c.setEmail(tabela.getString("email"));
+			c.setData_nasc(tabela.getDate("data_nasc").toLocalDate());
 			c.setIdcliente(tabela.getInt("idcliente"));
 			return c;
 		} catch (SQLException e) {
