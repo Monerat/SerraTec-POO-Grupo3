@@ -2,10 +2,11 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import classes.Produto;
+import classes.ProdEmpr;
 import conexao.Conexao;
 
-public class ProdutoDAO {
+public class ProdemprDAO {
+	
 	private Conexao conexao;
 	private String schema;
 	
@@ -13,7 +14,7 @@ public class ProdutoDAO {
 	PreparedStatement pAlteracao;
 	PreparedStatement pExclusao;
 	
-	public ProdutoDAO(Conexao conexao, String schema) {
+	public ProdemprDAO(Conexao conexao, String schema) {
 		this.conexao = conexao;
 		this.schema = schema;
 		prepararSqlInclusao();
@@ -22,10 +23,10 @@ public class ProdutoDAO {
 	}
 
 	private void prepararSqlInclusao() {
-		String sql = "INSERT INTO "+ this.schema + ".produto";	
-		sql += " (nome_prod, descricao)";
+		String sql = "INSERT INTO "+ this.schema + ".prodempr";	
+		sql += " (vl_un,idproduto,idempresa)";
 		sql += " VALUES ";
-		sql += " (?, ?)";
+		sql += " (?,?,?)";
 		
 		try {
 			this.pInclusao = conexao.getC().prepareStatement(sql);
@@ -36,16 +37,18 @@ public class ProdutoDAO {
 		
 	}
 	
-	public int incluirProduto(Produto produto) {
+	public int incluirProdEmpr(ProdEmpr prodemrp) {
 		try {		
 							
-			pInclusao.setString(1, produto.getNome_prod());
-			pInclusao.setString(2, produto.getDescricao());
+			pInclusao.setDouble(1, prodemrp.getVl_un());
+			pInclusao.setDouble(2, prodemrp.getIdproduto());
+			pInclusao.setDouble(3, prodemrp.getIdempresa());
+			
 			
 			return pInclusao.executeUpdate();
 		} catch (Exception e) {
 			if (e.getLocalizedMessage().contains("is null")) {
-				System.err.println("\nProduto não incluído.\nVerifique se foi chamado o conect:\n" + e);				
+				System.err.println("\n Produto-Empresa não incluído.\nVerifique se foi chamado o conect:\n" + e);				
 			} else {				
 				System.err.println(e);
 				e.printStackTrace();
@@ -55,10 +58,11 @@ public class ProdutoDAO {
 	}
 	
 	private void prepararSqlAlteracao() {
-		String sql = "UPDATE "+ this.schema + ".produto";	
-		sql += " set nome_prod = ?,";
-		sql += " descricao = ?";
-		sql += " where idproduto = ?";
+		String sql = "UPDATE "+ this.schema + ".prodempr";	
+		sql += " set vl_un = ?,";
+		sql += " set idproduto = ?,";
+		sql += " set idempresa = ?";
+		sql += " where idprodempr = ?";
 		
 		try {
 			this.pAlteracao =  conexao.getC().prepareStatement(sql);
@@ -68,17 +72,18 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public int alterarProduto(Produto produto) {
+	public int alterarProdEmpr(ProdEmpr prodemrp) {
 		try {
-			pAlteracao.setString(1, produto.getNome_prod());
-			pAlteracao.setString(2, produto.getDescricao());
-			pAlteracao.setInt(4, produto.getIdproduto());
+			pAlteracao.setDouble(1, prodemrp.getVl_un());
+			pAlteracao.setDouble(2, prodemrp.getIdproduto());
+			pAlteracao.setDouble(3, prodemrp.getIdempresa());
+			pAlteracao.setDouble(4, prodemrp.getIdprodempr());
 			
 			return pAlteracao.executeUpdate();
 			
 		} catch (Exception e) {
 			if (e.getLocalizedMessage().contains("is null")) {
-				System.err.println("\nProduto não alterado.\nVerifique se foi chamado o conect:\n" + e);				
+				System.err.println("\nProduto-Empresa não alterado.\nVerifique se foi chamado o conect:\n" + e);				
 			} else {				
 				System.err.println(e);
 				e.printStackTrace();
@@ -88,8 +93,8 @@ public class ProdutoDAO {
 	}
 	
 	private void prepararSqlExclusao() {
-		String sql = "DELETE FROM "+ this.schema + ".produto";
-		sql += " WHERE idproduto = ?";
+		String sql = "DELETE FROM "+ this.schema + ".prodempr";
+		sql += " WHERE idprodempr = ?";
 		
 		try {
 			this.pExclusao = conexao.getC().prepareStatement(sql);
@@ -99,14 +104,14 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public int excluirProduto(Produto produto) {
+	public int excluirProdEmpr(ProdEmpr prodemrp) {
 		try {
-			pExclusao.setInt(1, produto.getIdproduto());
+			pExclusao.setInt(1, prodemrp.getIdprodempr());
 			
 			return pExclusao.executeUpdate();
 		} catch  (Exception e) {
 			if (e.getLocalizedMessage().contains("is null")) {
-				System.err.println("\nProduto não excluído.\nVerifique se foi chamado o conect:\n" + e);				
+				System.err.println("\n Produto-Empresa não excluído.\nVerifique se foi chamado o conect:\n" + e);				
 			} else {				
 				System.err.println(e);
 				e.printStackTrace();
@@ -115,12 +120,13 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public ResultSet carregarProdutos() {
+	public ResultSet carregarProdEmpr() {
 		ResultSet tabela;				
-		String sql = "select * from " + this.schema + ".produto order by idproduto";
+		String sql = "select * from " + this.schema + ".prodempr order by idprodempr";
 		
 		tabela = conexao.query(sql);
 			
 		return tabela;
 	}
+	
 }

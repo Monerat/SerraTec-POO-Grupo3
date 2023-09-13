@@ -3,8 +3,6 @@ package lista;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import classes.Empresa;
 import classes.PedidoItem;
 import conexao.Conexao;
 import contantes.Util;
@@ -26,9 +24,9 @@ public class ListaPedidoItem {
 	public void imprimirPedidoItens() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Pedido Item","Quantidade","Id Pedido", "Id Produto", "Id Empresa"});
+		tabela.add(new String[] {"Id Pedido Item","Quantidade","Id Pedido", "Id Produto-Empresa"});
 		for (PedidoItem pedidoItem : pedidoItens) {
-			tabela.add(new String[] {String.valueOf(pedidoItem.getIdpedidoitem()), String.valueOf(pedidoItem.getQtd()), String.valueOf(pedidoItem.getIdpedido()), String.valueOf(pedidoItem.getIdproduto()), String.valueOf(pedidoItem.getIdempresa())});
+			tabela.add(new String[] {String.valueOf(pedidoItem.getIdpedidoitem()), String.valueOf(pedidoItem.getQtd()), String.valueOf(pedidoItem.getIdpedido()), String.valueOf(pedidoItem.getIdprodempr())});
 		}
 		for (int i = 0; i < tabela.size(); i++) {
 		    String[] linha = tabela.get(i);
@@ -88,9 +86,9 @@ public class ListaPedidoItem {
 		try {
 			pdi.setQtd(tabela.getDouble("qtd"));
 			pdi.setIdpedidoitem(tabela.getInt("idpedidoitem"));
-			pdi.setIdproduto(tabela.getInt("idproduto"));
+			pdi.setIdprodempr(tabela.getInt("idprodempr"));
 			pdi.setIdpedido(tabela.getInt("idpedido"));
-			pdi.setIdempresa(tabela.getInt("idempresa"));
+			
 			return pdi;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -24,9 +24,9 @@ public class ListaProduto {
 	public void imprimirProdutos() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Produto","Nome Produto","Descrição","Valor Unitário"});
+		tabela.add(new String[] {"Id Produto","Nome Produto","Descrição"});
 		for (Produto produto : produtos) {
-			tabela.add(new String[] {String.valueOf(produto.getIdproduto()),produto.getNome_prod(),produto.getDescricao(),String.valueOf(produto.getVl_un())});
+			tabela.add(new String[] {String.valueOf(produto.getIdproduto()),produto.getNome_prod(),produto.getDescricao()});
 		}
 		for (int i = 0; i < tabela.size(); i++) {
 		    String[] linha = tabela.get(i);
@@ -85,7 +85,6 @@ public class ListaProduto {
 		try {
 			p.setNome_prod(tabela.getString("nome_prod"));
 			p.setDescricao(tabela.getString("descricao"));
-			p.setVl_un(tabela.getDouble("vl_un"));
 			p.setIdproduto(tabela.getInt("idproduto"));
 			return p;
 		} catch (SQLException e) {

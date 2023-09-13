@@ -6,7 +6,6 @@ public class Produto {
 	private int idproduto;
 	private String nome_prod;
 	private String descricao;
-	private double vl_un;
 	
 	public static Produto cadastrar() {
 		@SuppressWarnings("resource")
@@ -17,11 +16,8 @@ public class Produto {
 		p.setNome_prod(input.nextLine());
 		System.out.println("Insira o nome Descrição do Produto: ");
 		p.setDescricao(input.nextLine());
-		System.out.println("Insira o Valor unitário: ");
-		p.setVl_un(input.nextDouble());
 		
 		return p;
-			
 	}
 	
 	public static Produto alterar(Produto prod) {
@@ -32,8 +28,6 @@ public class Produto {
 		prod.setNome_prod(input.nextLine());
 		System.out.println("Insira o nome Descrição do Produto: ");
 		prod.setDescricao(input.nextLine());
-		System.out.println("Insira o Valor unitário: ");
-		prod.setVl_un(input.nextDouble());
 		
 		return prod;
 	}
@@ -60,14 +54,6 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public double getVl_un() {
-		return vl_un;
-	}
-
-	public void setVl_un(double vl_un) {
-		this.vl_un = vl_un;
 	}
 	
 }

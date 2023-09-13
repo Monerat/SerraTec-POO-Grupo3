@@ -24,9 +24,9 @@ public class PedidoItemDAO {
 
 	private void prepararSqlInclusao() {
 		String sql = "INSERT INTO "+ this.schema + ".pedidoitem";	
-		sql += " (qtd,idpedido,idproduto,idempresa)";
+		sql += " (qtd,idpedido,idprodempr)";
 		sql += " VALUES ";
-		sql += " (?,?,?,?)";
+		sql += " (?,?,?)";
 		
 		try {
 			this.pInclusao = conexao.getC().prepareStatement(sql);
@@ -42,9 +42,7 @@ public class PedidoItemDAO {
 							
 			pInclusao.setDouble(1, pedidoitem.getQtd());
 			pInclusao.setDouble(2, pedidoitem.getIdpedido());
-			pInclusao.setDouble(3, pedidoitem.getIdproduto());
-			pInclusao.setDouble(4, pedidoitem.getIdempresa());
-			
+			pInclusao.setDouble(3, pedidoitem.getIdprodempr());			
 			
 			return pInclusao.executeUpdate();
 		} catch (Exception e) {
