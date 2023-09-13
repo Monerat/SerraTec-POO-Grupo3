@@ -25,7 +25,6 @@ import lista.ListaPedido;
 		ListaEmpresa listaEmpresa = new ListaEmpresa(con,schema);
 		
 		
-		
 		listaPedidos.imprimirPedidos();
 		System.out.println("Insira o Id Pedido: ");
 		pdi.setIdpedido(input.nextInt());

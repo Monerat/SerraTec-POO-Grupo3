@@ -2,7 +2,9 @@ package classes;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import conexao.Conexao;
 import contantes.Util;
+import lista.ListaCliente;
 
 public class Pedido {
 	private int idpedido;
@@ -10,12 +12,16 @@ public class Pedido {
 	private int idcliente;
 	
 
-	public static Pedido cadastrar() {
+	public static Pedido cadastrar(Conexao con, String schema) {
+		
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		Pedido pe = new Pedido();
 		
+		ListaCliente listaClientes = new ListaCliente(con,schema);
+		
 		pe.setData_ped(Util.validarData("Insira a data do Pedido: "));
+		listaClientes.imprimirClientes();
 		System.out.println("Insira o código do Cliente: ");
 		pe.setIdcliente(input.nextInt());
 		
@@ -23,11 +29,15 @@ public class Pedido {
 			
 	}
 	
-	public static Pedido alterar(Pedido pe) {
+	public static Pedido alterar(Conexao con, String schema, Pedido pe) {
+		
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		
+		ListaCliente listaClientes = new ListaCliente(con,schema);
+		
 		pe.setData_ped(Util.validarData("Insira a data do Pedido: "));
+		listaClientes.imprimirClientes();
 		System.out.println("Insira o código do Cliente: ");
 		pe.setIdcliente(input.nextInt());
 		

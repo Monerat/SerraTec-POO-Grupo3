@@ -1,4 +1,5 @@
-/classes/
+/.project
+/.settings/
 /principal/
-/lista/
-/dao/
+/classes/
+/contantes/

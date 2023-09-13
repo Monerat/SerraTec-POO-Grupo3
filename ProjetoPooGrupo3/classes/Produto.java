@@ -2,6 +2,8 @@ package classes;
 
 import java.util.Scanner;
 
+import contantes.Util;
+
 public class Produto {
 	private int idproduto;
 	private String nome_prod;
@@ -17,8 +19,9 @@ public class Produto {
 		p.setNome_prod(input.nextLine());
 		System.out.println("Insira o nome Descrição do Produto: ");
 		p.setDescricao(input.nextLine());
-		System.out.println("Insira o Valor unitário: ");
-		p.setVl_un(input.nextDouble());
+		Util.validarDouble("Insira o Valor unitário: ");
+		//System.out.println("Insira o Valor unitário: ");
+		//p.setVl_un(input.nextDouble());
 		
 		return p;
 			
