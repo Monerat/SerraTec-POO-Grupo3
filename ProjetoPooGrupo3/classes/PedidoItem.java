@@ -82,5 +82,4 @@ import lista.ListaPedido;
 		this.idprodempr = idprodempr;
 	}
 
-	
 }
