@@ -36,6 +36,12 @@ public class Pedido {
 		return pe;		
 	}
 	
+	public static Pedido select() {
+		Pedido c = new Pedido();
+		c.setIdpedido(Util.validarInteiro("Informe o id do Pedido: "));
+		return c;
+	}
+	
 	public int getIdpedido() {
 		return idpedido;
 	}

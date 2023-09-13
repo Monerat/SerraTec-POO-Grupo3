@@ -48,6 +48,12 @@ public class Cliente extends Pessoa {
 		return c;
 	}
 	
+	public static Cliente select() {
+		Cliente c = new Cliente();
+		c.setIdcliente(Util.validarInteiro("Informe o id do Cliente: "));
+		return c;
+	}
+	
 	public static Cliente alterar(Cliente c) {
 		
 		c.setNome(Util.validarString("Informe o Nome do Cliente: "));

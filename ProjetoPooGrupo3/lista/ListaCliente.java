@@ -60,10 +60,10 @@ public class ListaCliente {
 	public void imprimirClientes() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		String aux;
-		tabela.add(new String[] {"Id Cliente","Nome", "CPF", "Telefone", "Endereco", "Email", "Data de Nascimento"});
+		tabela.add(new String[] {"Id Cliente","Nome", "CPF", "Telefone","Email", "Data de Nascimento","Endereco"});
 		for (Cliente cliente : clientes) {
 			aux=Util.validaDataTransString(cliente.getData_nasc());
-			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome(),cliente.getCpf(), cliente.getTelefone(), cliente.getEndereco(), cliente.getEmail(), aux});
+			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome(),cliente.getCpf(), cliente.getTelefone(), cliente.getEmail(), aux, cliente.getEndereco()});
 		}
 		for (int i = 0; i < tabela.size(); i++) {
 		    String[] linha = tabela.get(i);
@@ -71,10 +71,17 @@ public class ListaCliente {
 		    	for (int k=0;k<linha.length;k++) {
 		    		System.out.print(Util.LINHAD);
 		    	}
+		    	System.out.print(Util.LINHAD);
 		    	System.out.println();
 	        }
 		    for (int j = 0; j < linha.length; j++) {
-		        System.out.format("%-30s | ", linha[j]);
+		        if(j == linha.length-1) {
+		        	System.out.format("%-80s | ", linha[j]);
+		        }
+		        else {
+		        	System.out.format("%-30s | ", linha[j]);
+		        }
+		    	
 		    }
 		    System.out.println();
 		}

@@ -23,6 +23,12 @@ public class Produto {
 		
 		return prod;
 	}
+	
+	public static Produto select() {
+		Produto c = new Produto();
+		c.setIdproduto(Util.validarInteiro("Informe o id do Produto: "));
+		return c;
+	}
 
 	public int getIdproduto() {
 		return idproduto;
