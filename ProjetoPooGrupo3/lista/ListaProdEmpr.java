@@ -48,11 +48,11 @@ public class ListaProdEmpr {
 		this.prodEmprs.add(pdi);
 	}
 	
-	public ProdEmpr localizarProdEmpr(int Idpedidoitem) {
+	public ProdEmpr localizarProdEmpr(int idprodempr) {
 		ProdEmpr localizado = null;
 		
 		for (ProdEmpr pdi : prodEmprs) {
-			if (pdi.getIdprodempr() == Idpedidoitem) {
+			if (pdi.getIdprodempr() == idprodempr) {
 				localizado = pdi;
 				break;
 			}

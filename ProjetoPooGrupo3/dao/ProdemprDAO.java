@@ -60,8 +60,8 @@ public class ProdemprDAO {
 	private void prepararSqlAlteracao() {
 		String sql = "UPDATE "+ this.schema + ".prodempr";	
 		sql += " set vl_un = ?,";
-		sql += " set idproduto = ?,";
-		sql += " set idempresa = ?";
+		sql += " idproduto = ?,";
+		sql += " idempresa = ?";
 		sql += " where idprodempr = ?";
 		
 		try {

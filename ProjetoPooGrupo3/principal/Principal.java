@@ -294,7 +294,7 @@ public class Principal {
 	public static void alterarProdEmpr() {
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
 		listaProdEmpr.imprimirProdEmpr();
-		ProdEmprDML.alterarProdEmpr(con, SCHEMA, listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Id do Produto-Empresa que deseja alterar:")));
+		ProdEmprDML.alterarProdEmpr(con, SCHEMA, ProdEmpr.alterar(con,SCHEMA,listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Id do Produto-Empresa que deseja alterar:"))));
 	}
 	
 	public static void excluirCliente() {

@@ -72,7 +72,7 @@ public class ProdutoDAO {
 		try {
 			pAlteracao.setString(1, produto.getNome_prod());
 			pAlteracao.setString(2, produto.getDescricao());
-			pAlteracao.setInt(4, produto.getIdproduto());
+			pAlteracao.setInt(3, produto.getIdproduto());
 			
 			return pAlteracao.executeUpdate();
 			
