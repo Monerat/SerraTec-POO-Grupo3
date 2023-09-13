@@ -54,9 +54,9 @@ public class Util {
 				return dataConvertida;
 			} catch (Exception e) {
 				System.out.println("Data inválida");	
-				return null;
 			}
 		} while (!dataValidada);
+		return null;
 	}
 	
 	public static String validaDataTransString(LocalDate local) {
@@ -122,7 +122,7 @@ public class Util {
     public static String validarString(String mensagem) {
     	boolean validado = false;
     	String string = null;
-    	Pattern p = Pattern.compile("^[a-zA-Zà-úÀ-Ú0-9.,ç]*$");
+    	Pattern p = Pattern.compile("^[ a-zA-Zà-úÀ-Ú0-9.,ç]*$");
     	
     	do {
     		System.out.println(mensagem);
@@ -202,5 +202,25 @@ public class Util {
     	} while (!valido);
     	
     	return email;
+    }
+    
+    public static String validarUf(String mensagem) {
+        Pattern p = Pattern.compile("[a-zA-Z]{2}");
+        String uf = "AA";
+        boolean valido = p.matcher(uf).matches();
+        
+        do {
+            System.out.println("Digite seu email:");
+            uf = in.nextLine();
+
+            // Valida o UF
+            valido = p.matcher(uf).matches();
+
+            if (!valido) {
+                System.out.println("Email inválido.");
+            }
+        } while (!valido);
+        
+        return uf;
     }
  }

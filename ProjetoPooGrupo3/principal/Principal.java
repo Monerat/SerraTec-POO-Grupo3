@@ -60,7 +60,8 @@ public class Principal {
 				4) Itens do Pedido
 				5) Produto
 				6) Produto-Empresa
-				7) Sair
+				7) Querys
+				8) Sair
 				""");
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
@@ -79,6 +80,21 @@ public class Principal {
 				2) Alterar
 				3) Excluir
 				4) Listar
+				""");
+		System.out.println(Util.LINHAD);
+		return Util.validarInteiro("Informe uma opção:");
+	}
+	
+	public static int subMenuQuery() {
+		System.out.println(Util.LINHAD);
+		System.out.println(Util.CABECALHO);
+		System.out.println(Util.MENU);
+		System.out.println(Util.LINHAD);
+		System.out.println("""
+				
+				1) Deve permitir selecionar um cliente por código e mostrar todos os pedidos que possui.
+				2) Deve permitir selecionar um produto por código e mostrar todos os pedidos que possui.
+				3) Deve permitir selecionar um pedido por código e mostrar o seu cliente e todos os produtos que possui.
 				""");
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
@@ -204,6 +220,23 @@ public class Principal {
 		}
 	}
 	
+	public static void opcaoQuery(int opcao) {
+		switch (opcao) {
+		case 1:
+			queryTodosPedCliente();
+			break;
+		case 2:
+			queryTodosPedProd();
+			break;
+		case 3:
+			queryPedClienteProdutos();
+			break;
+		default:
+			System.out.println("Opção inválidada");
+			break;
+		}
+	}
+	
 	public static int opcoes(int opcao) {
 		
 			switch (opcao) {
@@ -226,6 +259,9 @@ public class Principal {
 				opcaoCrudProdEmpr(subMenu());
 				break;
 			case 7:
+				opcaoQuery(subMenuQuery());
+				break;
+			case 8:
 				System.out.println(Util.MENUFINAL);
 				break;
 			default:
@@ -360,6 +396,18 @@ public class Principal {
 	public static void listarProdEmpr() {
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
 		listaProdEmpr.imprimirProdEmpr();
+	}
+	
+	public static void queryTodosPedCliente() {
+		QueryDML.querySelectCliente(con, SCHEMA, Cliente.select());
+	}
+
+	public static void queryTodosPedProd() {
+		QueryDML.querySelectProduto(con, SCHEMA, Produto.select());
+	}
+	
+	public static void queryPedClienteProdutos() {
+		QueryDML.querySelectPedido(con, SCHEMA, Pedido.select());
 	}
 	
 }
