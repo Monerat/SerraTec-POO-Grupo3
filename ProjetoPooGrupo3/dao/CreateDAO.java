@@ -149,7 +149,7 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "telefone", "varchar(100)", false, false, null, null);
 			criarCampo(con, schema, entidade, "endereco", "varchar(250)", false, false, null, null);
 			criarCampo(con, schema, entidade, "email", "varchar(100)", false, false, null, null);
-			criarCampo(con, schema, entidade, "data_nasc", "varchar(100)", false, false, null, null);
+			criarCampo(con, schema, entidade, "data_nasc", "Date", false, false, null, null);
 		}		
 	}
 	

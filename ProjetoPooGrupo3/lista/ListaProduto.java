@@ -3,8 +3,6 @@ package lista;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import classes.Empresa;
 import classes.Produto;
 import conexao.Conexao;
 import contantes.Util;
@@ -49,7 +47,7 @@ public class ListaProduto {
 		this.produtos.add(p);
 	}
 	
-	public Produto localizarProdutos(int idProduto) {
+	public Produto localizarProduto(int idProduto) {
 		Produto localizado = null;
 		
 		for (Produto p : produtos) {
@@ -85,9 +83,9 @@ public class ListaProduto {
 		Produto p = new Produto();
 		
 		try {
-			p.setNome_prod(tabela.getString("nome"));
-			p.setDescricao(tabela.getString("descrição"));
-			p.setVl_un(tabela.getDouble("vl_uni"));
+			p.setNome_prod(tabela.getString("nome_prod"));
+			p.setDescricao(tabela.getString("descricao"));
+			p.setVl_un(tabela.getDouble("vl_un"));
 			p.setIdproduto(tabela.getInt("idproduto"));
 			return p;
 		} catch (SQLException e) {

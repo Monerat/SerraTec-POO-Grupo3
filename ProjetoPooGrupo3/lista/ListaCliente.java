@@ -59,10 +59,11 @@ public class ListaCliente {
 	
 	public void imprimirClientes() {
 		ArrayList<String[]> tabela = new ArrayList<>();
-		
+		String aux;
 		tabela.add(new String[] {"Id Cliente","Nome", "CPF", "Telefone", "Endereco", "Email", "Data de Nascimento"});
 		for (Cliente cliente : clientes) {
-			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome(),cliente.getCpf(), cliente.getTelefone(), cliente.getEndereco(), cliente.getEmail(), cliente.getData_nasc().toString()});
+			aux=Util.validaDataTransString(cliente.getData_nasc());
+			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome(),cliente.getCpf(), cliente.getTelefone(), cliente.getEndereco(), cliente.getEmail(), aux});
 		}
 		for (int i = 0; i < tabela.size(); i++) {
 		    String[] linha = tabela.get(i);

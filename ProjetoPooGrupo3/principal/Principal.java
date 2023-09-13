@@ -225,7 +225,7 @@ public class Principal {
 	}
 	
 	public static void cadastrarPedidoItem() {
-		PedidoItemDML.gravarPedidoItem(con, SCHEMA, PedidoItem.cadastrar());
+		PedidoItemDML.gravarPedidoItem(con, SCHEMA, PedidoItem.cadastrar(con,SCHEMA));
 
 	}
 	
@@ -235,7 +235,6 @@ public class Principal {
 	}
 	
 	public static void alterarCliente() {
-		//criar o Alterar o cadastro
 		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
 		listaCliente.imprimirClientes();
 		ClienteDML.alterarCliente(con, SCHEMA, Cliente.alterar(listaCliente.localizarCliente(Util.validarInteiro("Informe o Id do Cliente que deseja alterar:"))));
@@ -248,7 +247,9 @@ public class Principal {
 	}
 	
 	public static void alterarPedido() {
-		//criar o Alterar o cadastro
+		ListaPedido listaPedido = new ListaPedido(con,SCHEMA);
+		listaPedido.imprimirPedidos();
+		PedidoDML.alterarPedido(con, SCHEMA, Pedido.alterar(listaPedido.localizarPedido(Util.validarInteiro("Informe o Id da Pedido que deseja alterar:"))));
 	}
 	
 	public static void alterarPedidoItem() {
@@ -258,11 +259,12 @@ public class Principal {
 	}
 	
 	public static void alterarProduto() {
-		//criar o Alterar o cadastro
+		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
+		listaProduto.imprimirProdutos();
+		ProdutoDML.alterarProduto(con, SCHEMA, Produto.alterar(listaProduto.localizarProduto(Util.validarInteiro("Informe o Id da Produto que deseja alterar:"))));
 	}
 	
 	public static void excluirCliente() {
-		//criar o excluir o cadastro
 		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
 		listaCliente.imprimirClientes();
 		ClienteDML.excluirCliente(con, SCHEMA, listaCliente.localizarCliente(Util.validarInteiro("Informe o Id do Cliente que deseja excluir:")));
@@ -276,7 +278,9 @@ public class Principal {
 	}
 	
 	public static void excluirPedido() {
-		//criar o excluir o cadastro
+		ListaPedido listaPedido = new ListaPedido(con,SCHEMA);
+		listaPedido.imprimirPedidos();
+		PedidoDML.excluirPedido(con, SCHEMA, listaPedido.localizarPedido(Util.validarInteiro("Informe o Id do Pedido que deseja excluir:")));
 	}
 	
 	public static void excluirPedidoItem() {
@@ -286,7 +290,9 @@ public class Principal {
 	}
 	
 	public static void excluirProduto() {
-		//criar o excluir o cadastro
+		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
+		listaProduto.imprimirProdutos();
+		ProdutoDML.excluirProduto(con, SCHEMA, listaProduto.localizarProduto(Util.validarInteiro("Informe o Id do Produto que deseja excluir:")));
 	}
 	
 	public static void listarCliente() {

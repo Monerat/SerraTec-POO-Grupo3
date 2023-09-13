@@ -23,6 +23,17 @@ public class Pedido {
 			
 	}
 	
+	public static Pedido alterar(Pedido pe) {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		pe.setData_ped(Util.validarData("Insira a data do Pedido: "));
+		System.out.println("Insira o código do Cliente: ");
+		pe.setIdcliente(input.nextInt());
+		
+		return pe;		
+	}
+	
 	public int getIdpedido() {
 		return idpedido;
 	}

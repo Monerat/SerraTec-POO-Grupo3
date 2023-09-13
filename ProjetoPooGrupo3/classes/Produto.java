@@ -23,6 +23,20 @@ public class Produto {
 		return p;
 			
 	}
+	
+	public static Produto alterar(Produto prod) {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Insira o nome Produto: ");
+		prod.setNome_prod(input.nextLine());
+		System.out.println("Insira o nome Descrição do Produto: ");
+		prod.setDescricao(input.nextLine());
+		System.out.println("Insira o Valor unitário: ");
+		prod.setVl_un(input.nextDouble());
+		
+		return prod;
+	}
 
 	public int getIdproduto() {
 		return idproduto;

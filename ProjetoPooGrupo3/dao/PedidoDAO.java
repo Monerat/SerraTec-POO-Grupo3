@@ -58,7 +58,7 @@ public class PedidoDAO {
 	private void prepararSqlAlteracao() {
 		String sql = "UPDATE "+ this.schema + ".pedido";	
 		sql += " set data_ped = ?,";
-		sql += " idcliente = ?,";
+		sql += " idcliente = ?";
 		sql += " where idpedido = ?";
 		
 		try {

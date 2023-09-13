@@ -14,11 +14,32 @@ import lista.ListaPedido;
 	private int idproduto;
 	private int idempresa;
 
-	public static PedidoItem cadastrar() {
+	public static PedidoItem cadastrar(Conexao con, String schema) {
 
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		PedidoItem pdi = new PedidoItem();
+		
+		ListaPedido listaPedidos = new ListaPedido(con,schema);
+		ListaProduto listaProdutos = new ListaProduto(con,schema);
+		ListaEmpresa listaEmpresa = new ListaEmpresa(con,schema);
+		
+		
+		
+		listaPedidos.imprimirPedidos();
+		System.out.println("Insira o Id Pedido: ");
+		pdi.setIdpedido(input.nextInt());
+		System.out.println();
+		
+		listaEmpresa.imprimirEmpresas();
+		System.out.println("Insira o Id Empresa: ");
+		pdi.setIdempresa(input.nextInt());
+		System.out.println();
+		
+		listaProdutos.imprimirProdutos();
+		System.out.println("Insira o Id Produto: ");
+		pdi.setIdproduto(input.nextInt());
+		System.out.println();
 		
 		System.out.println("Insira a quantidade: ");
 		pdi.setQtd(input.nextDouble());
@@ -38,14 +59,17 @@ import lista.ListaPedido;
 		listaPedidos.imprimirPedidos();
 		System.out.println("Insira o novo ID pedido: ");
 		pi.setIdpedido(input.nextInt());
+		System.out.println();
 		
 		listaProdutos.imprimirProdutos();
 		System.out.println("Insira o novo ID produto: ");
 		pi.setIdproduto(input.nextInt());
+		System.out.println();
 		
 		listaEmpresa.imprimirEmpresas();
 		System.out.println("Insira o novo ID empresa: ");
 		pi.setIdempresa(input.nextInt());
+		System.out.println();
 		
 		System.out.println("Insira uma nova quantidade: ");
 		pi.setQtd(input.nextDouble());

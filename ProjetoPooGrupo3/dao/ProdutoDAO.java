@@ -59,7 +59,7 @@ public class ProdutoDAO {
 		String sql = "UPDATE "+ this.schema + ".produto";	
 		sql += " set nome_prod = ?,";
 		sql += " descricao = ?,";
-		sql += " vl_un = ?,";
+		sql += " vl_un = ?";
 		sql += " where idproduto = ?";
 		
 		try {
