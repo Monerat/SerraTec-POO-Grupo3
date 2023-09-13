@@ -22,8 +22,7 @@ public class Pedido {
 		
 		pe.setData_ped(Util.validarData("Insira a data do Pedido: "));
 		listaClientes.imprimirClientes();
-		System.out.println("Insira o código do Cliente: ");
-		pe.setIdcliente(input.nextInt());
+		pe.setIdcliente(Util.validarInteiro("Insira o código do Cliente: "));
 		
 		return pe;
 			
@@ -38,8 +37,7 @@ public class Pedido {
 		
 		pe.setData_ped(Util.validarData("Insira a data do Pedido: "));
 		listaClientes.imprimirClientes();
-		System.out.println("Insira o código do Cliente: ");
-		pe.setIdcliente(input.nextInt());
+		pe.setIdcliente(Util.validarInteiro("Insira o código do Cliente: "));
 		
 		return pe;		
 	}

@@ -121,7 +121,7 @@ public class Util {
     public static String validarString(String mensagem) {
     	boolean validado = false;
     	String string = null;
-    	Pattern p = Pattern.compile("^[a-zA-Z0-9]*$");
+    	Pattern p = Pattern.compile("^[a-zA-Zà-úÀ-Ú0-9.,ç]*$");
     	
     	do {
     		System.out.println(mensagem);
@@ -164,7 +164,7 @@ public class Util {
     }
     
     public static String validarTelefone(String mensagem) {
-    	Pattern p = Pattern.compile("^(//+[0-9]{2}|00)?[0-9]{9,11}$");
+    	Pattern p = Pattern.compile("^([+0-9]{3}|00)?[0-9]{9,11}$");
     	String telefone = "+5511999999999";
     	boolean valido = p.matcher(telefone).matches();
     	

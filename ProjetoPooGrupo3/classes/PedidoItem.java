@@ -3,6 +3,7 @@ package classes;
 import java.util.Scanner;
 
 import conexao.Conexao;
+import contantes.Util;
 import lista.ListaEmpresa;
 import lista.ListaProduto;
 import lista.ListaPedido;
@@ -26,22 +27,18 @@ import lista.ListaPedido;
 		
 		
 		listaPedidos.imprimirPedidos();
-		System.out.println("Insira o Id Pedido: ");
-		pdi.setIdpedido(input.nextInt());
+		pdi.setIdpedido(Util.validarInteiro("Insira o Id Pedido: "));
 		System.out.println();
 		
 		listaEmpresa.imprimirEmpresas();
-		System.out.println("Insira o Id Empresa: ");
-		pdi.setIdempresa(input.nextInt());
+		pdi.setIdempresa(Util.validarInteiro("Insira o Id Empresa: "));
 		System.out.println();
 		
 		listaProdutos.imprimirProdutos();
-		System.out.println("Insira o Id Produto: ");
-		pdi.setIdproduto(input.nextInt());
+		pdi.setIdproduto(Util.validarInteiro("Insira o Id Produto: "));
 		System.out.println();
 		
-		System.out.println("Insira a quantidade: ");
-		pdi.setQtd(input.nextDouble());
+		pdi.setQtd(Util.validarDouble("Insira a quantidade: "));
 		
 		return pdi;
 		
@@ -56,22 +53,18 @@ import lista.ListaPedido;
 		ListaEmpresa listaEmpresa = new ListaEmpresa(con,schema);
 		
 		listaPedidos.imprimirPedidos();
-		System.out.println("Insira o novo ID pedido: ");
-		pi.setIdpedido(input.nextInt());
+		pi.setIdpedido(Util.validarInteiro("Insira o novo ID pedido: "));
 		System.out.println();
 		
 		listaProdutos.imprimirProdutos();
-		System.out.println("Insira o novo ID produto: ");
-		pi.setIdproduto(input.nextInt());
+		pi.setIdproduto(Util.validarInteiro("Insira o novo ID produto: "));
 		System.out.println();
 		
 		listaEmpresa.imprimirEmpresas();
-		System.out.println("Insira o novo ID empresa: ");
-		pi.setIdempresa(input.nextInt());
+		pi.setIdempresa(Util.validarInteiro("Insira o novo ID empresa: "));
 		System.out.println();
 		
-		System.out.println("Insira uma nova quantidade: ");
-		pi.setQtd(input.nextDouble());
+		pi.setQtd(Util.validarDouble("Insira uma nova quantidade: "));
 		
 		return pi;
 	}

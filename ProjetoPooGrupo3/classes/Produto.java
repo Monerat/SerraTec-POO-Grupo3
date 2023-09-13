@@ -15,13 +15,9 @@ public class Produto {
 		Scanner input = new Scanner(System.in);
 		Produto p = new Produto();
 		
-		System.out.println("Insira o nome Produto: ");
-		p.setNome_prod(input.nextLine());
-		System.out.println("Insira o nome Descrição do Produto: ");
-		p.setDescricao(input.nextLine());
-		Util.validarDouble("Insira o Valor unitário: ");
-		//System.out.println("Insira o Valor unitário: ");
-		//p.setVl_un(input.nextDouble());
+		p.setNome_prod(Util.validarString("Insira o nome Produto: "));
+		p.setDescricao(Util.validarString("Insira a Descrição do Produto: "));
+		p.setVl_un(Util.validarDouble("Insira o Valor unitário: "));
 		
 		return p;
 			
@@ -31,12 +27,9 @@ public class Produto {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Insira o nome Produto: ");
-		prod.setNome_prod(input.nextLine());
-		System.out.println("Insira o nome Descrição do Produto: ");
-		prod.setDescricao(input.nextLine());
-		System.out.println("Insira o Valor unitário: ");
-		prod.setVl_un(input.nextDouble());
+		prod.setNome_prod(Util.validarString("Insira o nome Produto: "));
+		prod.setDescricao(Util.validarString("Insira a Descrição do Produto: "));
+		prod.setVl_un(Util.validarDouble("Insira o Valor unitário: "));
 		
 		return prod;
 	}
