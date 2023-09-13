@@ -3,10 +3,6 @@ package lista;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import classes.Empresa;
 import classes.Pedido;
 import conexao.Conexao;
 import contantes.Util;

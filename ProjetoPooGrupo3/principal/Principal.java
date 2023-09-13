@@ -33,7 +33,13 @@ public class Principal {
 			con = new Conexao(dadosCon); 
 			con.conect();
 			
-			opcoes(menu());
+			int continuar;
+			
+			do{
+				continuar = opcoes(menu());
+			}while(continuar == 1);
+			
+			System.out.println(Util.MENUFINAL);
 			
 		} else {
 			System.out.println("Ocorreu um problema na criação do banco de dados");
@@ -178,30 +184,32 @@ public class Principal {
 		}
 	}
 	
-	public static void opcoes(int opcao) {
-		switch (opcao) {
-		case 1:
-			opcaoCrudCliente(subMenu());
-			break;
-		case 2:
-			opcaoCrudEmpresa(subMenu());
-			break;
-		case 3:
-			opcaoCrudPedido(subMenu());
-			break;
-		case 4:
-			opcaoCrudPedidoItem(subMenu());
-			break;
-		case 5:
-			opcaoCrudProduto(subMenu());
-			break;
-		case 6:
-			System.out.println(Util.MENUFINAL);
-			break;
-		default:
-			System.out.println("Opção inválidada");
-			break;
-		}
+	public static int opcoes(int opcao) {
+		
+			switch (opcao) {
+			case 1:
+				opcaoCrudCliente(subMenu());
+				break;
+			case 2:
+				opcaoCrudEmpresa(subMenu());
+				break;
+			case 3:
+				opcaoCrudPedido(subMenu());
+				break;
+			case 4:
+				opcaoCrudPedidoItem(subMenu());
+				break;
+			case 5:
+				opcaoCrudProduto(subMenu());
+				break;
+			case 6:
+				System.out.println(Util.MENUFINAL);
+				break;
+			default:
+				System.out.println("Opção inválidada");
+				break;
+			}
+		return Util.validarInteiro("\nDeseja voltar ao menu inicial? \n1) Voltar \n2) Sair");
 	}
 	
 	public static void cadastrarCliente() {
@@ -228,6 +236,9 @@ public class Principal {
 	
 	public static void alterarCliente() {
 		//criar o Alterar o cadastro
+		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
+		listaCliente.imprimirClientes();
+		ClienteDML.alterarCliente(con, SCHEMA, Cliente.alterar(listaCliente.localizarCliente(Util.validarInteiro("Informe o Id do Cliente que deseja alterar:"))));
 	}
 	
 	public static void alterarEmpresa() {
@@ -252,6 +263,10 @@ public class Principal {
 	
 	public static void excluirCliente() {
 		//criar o excluir o cadastro
+		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
+		listaCliente.imprimirClientes();
+		ClienteDML.excluirCliente(con, SCHEMA, listaCliente.localizarCliente(Util.validarInteiro("Informe o Id do Cliente que deseja excluir:")));
+		
 	}
 	
 	public static void excluirEmpresa() {
@@ -275,7 +290,8 @@ public class Principal {
 	}
 	
 	public static void listarCliente() {
-		//criar o listar de cada entidade
+		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
+		listaCliente.imprimirClientes();
 	}
 	
 	public static void listarEmpresa() {

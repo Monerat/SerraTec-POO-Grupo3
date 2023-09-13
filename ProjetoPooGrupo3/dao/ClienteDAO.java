@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import classes.Cliente;
@@ -35,9 +36,9 @@ public class ClienteDAO {
 	
 	private void prepararSqlInclusao() {
 		String sql = "INSERT INTO "+ this.schema + ".cliente";	
-		sql += " (nome)";
+		sql += " (nome, cpf, telefone, endereco, email, data_nasc)";
 		sql += " values ";
-		sql += " (?)";
+		sql += " (?, ?, ?, ?, ?, ?)";
 		
 		try {
 			this.pInclusao = conexao.getC().prepareStatement(sql);
@@ -50,6 +51,10 @@ public class ClienteDAO {
 	private void prepararSqlAlteracao() {
 		String sql = "update "+ this.schema + ".cliente";	
 		sql += " set nome = ?,";
+		sql += " cpf = ?,";
+		sql += " telefone = ?,";
+		sql += " endereco = ?,";
+		sql += " data_nasc = ?";
 		sql += " where idcliente = ?";
 		
 		try {
@@ -63,6 +68,10 @@ public class ClienteDAO {
 	public int alterarCliente(Cliente cliente) {
 		try {
 			pAlteracao.setString(1, cliente.getNome());
+			pAlteracao.setString(2, cliente.getCpf());
+			pAlteracao.setString(3, cliente.getTelefone());
+			pAlteracao.setString(4, cliente.getEndereco());
+			pAlteracao.setDate(5, Date.valueOf(cliente.getData_nasc()));
 			pAlteracao.setInt(2, cliente.getIdcliente());
 			
 			return pAlteracao.executeUpdate();
@@ -82,6 +91,11 @@ public class ClienteDAO {
 		try {		
 							
 			pInclusao.setString(1, cliente.getNome());
+			pInclusao.setString(2, cliente.getCpf());
+			pInclusao.setString(3, cliente.getTelefone());
+			pInclusao.setString(4, cliente.getEndereco());
+			pInclusao.setString(5, cliente.getEmail());
+			pInclusao.setDate(6, Date.valueOf(cliente.getData_nasc()));
 			
 			return pInclusao.executeUpdate();
 		} catch (Exception e) {
