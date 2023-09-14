@@ -24,15 +24,15 @@ Criar um banco de dados que contenha:
 
 
 ### As features necessárias:
-1. Cada tabela:
-   - 1. Deve permitir cadastrar, alterar e excluir (CRUD): clientes, produtos e pedidos. ✔️
-   - 2. Deve possuir classes para cada entidade. ✔️
-   - 3. Deve possuir uma classe de conexão. ✔️
-   - 4. Deve possuir classes DAO. ✔️
-   - 5. Deve possuir método para selecionar um registro (localizar). ✔️
-   - 6. Deve possuir método para selecionar mais de um registro (relatório). ✔️
+1. Cada tabela: ✔️
+   - 1. Deve permitir cadastrar, alterar e excluir (CRUD): clientes, produtos e pedidos.
+   - 2. Deve possuir classes para cada entidade.
+   - 3. Deve possuir uma classe de conexão.
+   - 4. Deve possuir classes DAO.
+   - 5. Deve possuir método para selecionar um registro (localizar).
+   - 6. Deve possuir método para selecionar mais de um registro (relatório).
 
-2. O sistema deve possuir um menu para cada situação:
+2. O sistema deve possuir um menu para cada situação: ✔️
 
  - ``Produto``
  - ``Cliente``
