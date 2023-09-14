@@ -1,7 +1,6 @@
 package dao;
 
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import classes.Cliente;
 import classes.Pedido;
@@ -12,10 +11,6 @@ import contantes.Util;
 public class QueryDAO {
 	private Conexao conexao;
 	private String schema;
-	
-	PreparedStatement pSelectCliente;
-	PreparedStatement pSelectPedido;
-	PreparedStatement pSelectProduto;
 	
 	public QueryDAO(Conexao conexao, String schema) { 
 		this.conexao = conexao;
