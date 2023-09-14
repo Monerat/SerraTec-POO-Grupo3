@@ -54,13 +54,13 @@ public class Principal {
 		System.out.println(Util.LINHAD);
 		System.out.println("""
 				
-				1) Cliente
-				2) Empresa
-				3) Pedido
-				4) Itens do Pedido
-				5) Produto
-				6) Produto-Empresa
-				7) Querys
+				1) Empresa(CRUD)
+				2) Produto(CRUD)
+				3) Produto-Empresa(CRUD)
+				4) Cliente(CRUD)
+				5) Pedido(CRUD)
+				6) Itens do Pedido(CRUD)
+				7) Querys(Relatórios)
 				8) Sair
 				""");
 		System.out.println(Util.LINHAD);
@@ -241,22 +241,22 @@ public class Principal {
 		
 			switch (opcao) {
 			case 1:
-				opcaoCrudCliente(subMenu());
-				break;
-			case 2:
 				opcaoCrudEmpresa(subMenu());
 				break;
-			case 3:
-				opcaoCrudPedido(subMenu());
-				break;
-			case 4:
-				opcaoCrudPedidoItem(subMenu());
-				break;
-			case 5:
+			case 2:
 				opcaoCrudProduto(subMenu());
 				break;
-			case 6:
+			case 3:
 				opcaoCrudProdEmpr(subMenu());
+				break;
+			case 4:
+				opcaoCrudCliente(subMenu());
+				break;
+			case 5:
+				opcaoCrudPedido(subMenu());
+				break;
+			case 6:
+				opcaoCrudPedidoItem(subMenu());
 				break;
 			case 7:
 				opcaoQuery(subMenuQuery());

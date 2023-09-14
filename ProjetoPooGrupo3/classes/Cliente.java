@@ -39,7 +39,7 @@ public class Cliente extends Pessoa {
 		c.setCidade(Util.validarString("Cidade: "));
 
 		// Pega o UF
-		c.setUf(Util.validarString("UF: "));
+		c.setUf(Util.validarUf("UF: "));
 
 		// Junta as partes do endereço
 		c.setEndereco(c.getLogradouro() + ", " + c.getNumero() + ", " + c.getBairro() + ", " + c.getCidade() + ", " + c.getUf());

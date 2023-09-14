@@ -190,7 +190,7 @@ public class Util {
     	boolean valido = p.matcher(email).matches();
     	
     	do {
-    		System.out.println("Digite seu email:");
+    		System.out.println(mensagem);
     		email = in.nextLine();
 
     		// Valida o email
@@ -210,14 +210,14 @@ public class Util {
         boolean valido = p.matcher(uf).matches();
         
         do {
-            System.out.println("Digite seu email:");
+            System.out.println(mensagem);
             uf = in.nextLine();
 
             // Valida o UF
             valido = p.matcher(uf).matches();
 
             if (!valido) {
-                System.out.println("Email inválido.");
+                System.out.println("UF inválida.");
             }
         } while (!valido);
         
