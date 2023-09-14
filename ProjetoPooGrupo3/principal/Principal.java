@@ -1,6 +1,9 @@
 package principal;
 
 import lista.*;
+
+import java.util.Scanner;
+
 import classes.*;
 import contantes.Util;
 import dao.*;
@@ -11,40 +14,82 @@ public class Principal {
 	
 	public static Conexao con;
 	public static DadosConexao dadosCon = new DadosConexao();
+	
 	public static final String BANCO = "grupo3_poo";
 	public static final String SCHEMA = "sistema";
-	public static final String LOCAL = "localhost";
-	public static final String USUARIO = "postgres";
-	public static final String SENHA = "123456";
-	public static final String PORTA = "5432";
-	public static final String BD = "PostgreSql";
+	public static final String PATH = "C:\\temp\\";
+	public static final String SFILE = "DadosConexao.ini";
 	
 	
 	public static void main(String[] args) {
-		dadosCon.setBanco(BANCO);
-		dadosCon.setLocal(LOCAL);
-		dadosCon.setUser(USUARIO);
-		dadosCon.setSenha(SENHA);
-		dadosCon.setPorta(PORTA);
-		dadosCon.setBd(BD);
 		
 		//Criar o database
-		if (CreateDAO.createBD(BANCO, SCHEMA, dadosCon)) {
-			con = new Conexao(dadosCon); 
-			con.conect();
-			
-			int continuar;
-			
-			do{
-				continuar = opcoes(menu());
-			}while(continuar == 1);
-			
-			System.out.println(Util.MENUFINAL);
-			
-		} else {
-			System.out.println("Ocorreu um problema na criação do banco de dados");
+		if (configInicial()) {
+			if (CreateDAO.createBD(BANCO, SCHEMA, dadosCon)) {
+				con = new Conexao(dadosCon); 
+				con.conect();
+				
+				int continuar;
+				
+				do{
+					continuar = opcoes(menu());
+				}while(continuar == 1);
+				
+				System.out.println(Util.MENUFINAL);
+				
+			} else {
+				System.out.println("Ocorreu um problema na criação do banco de dados");
+			}
+		}else {
+			System.err.println("Não foi possível executar o sistema.");
 		}
+
+	}
+	
+	public static boolean configInicial() {
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		ArquivoTxt conexaoIni = new ArquivoTxt(PATH+SFILE);
+		boolean abrirSistema = false;
+		String local, porta, usuario, senha, banco;
 		
+		
+		if (conexaoIni.criarArquivo()) {
+			if (conexaoIni.alimentaDadosConexao()) {
+				dadosCon = conexaoIni.getData();
+				abrirSistema = true;
+			} else {
+				conexaoIni.apagarArquivo();
+				System.out.println("Arquivo de configuração de conexão:\n");
+				System.out.println("Local: ");
+				local = input.nextLine();
+				System.out.println("Porta: ");
+				porta = input.nextLine();
+				System.out.println("Usuário: ");
+				usuario = input.nextLine();
+				System.out.println("Senha: ");
+				senha = input.nextLine();
+				System.out.println("Database: ");
+				banco = input.nextLine();
+				
+				if (conexaoIni.criarArquivo()) {
+					conexaoIni.escreverArquivo("bd=PostgreSql");
+					conexaoIni.escreverArquivo("local="+local);
+					conexaoIni.escreverArquivo("porta="+porta);
+					conexaoIni.escreverArquivo("usuario="+usuario);
+					conexaoIni.escreverArquivo("senha="+senha);
+					conexaoIni.escreverArquivo("banco="+banco);
+					
+					if (conexaoIni.alimentaDadosConexao()) {
+						dadosCon = conexaoIni.getData();
+						abrirSistema = true;
+					} else System.out.println("Não foi possível efetuar a configuração.\nVerifique");	
+				}
+			}
+		} else
+			System.out.println("Houve um problema na criação do arquivo de configuração.");
+		
+		return abrirSistema;
 	}
 	
 	public static int  menu() {	
