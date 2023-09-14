@@ -119,6 +119,34 @@ public class Util {
 		return numero;
 	}
 
+	public static String validarChar(String mensagem) {
+    	boolean validado = false;
+    	String caractere ;
+    	Pattern p = Pattern.compile("^[sSnN]*$");
+    	
+    	do {
+    		System.out.println(mensagem);
+    		caractere = in.nextLine();
+
+    		try {
+    			if (caractere.trim().isEmpty()) {
+    				throw new RuntimeException("O campo não pode conter somente caracteres vazios!\n");
+    			} else if (!p.matcher(caractere).find()) {
+    				throw new RuntimeException("O campo só deve conter S ou N!\n");
+    			} else if (caractere.length()!=1) {
+    				throw new RuntimeException("O campo deve apenas conter 1 caractere!\n");
+    			}
+    			else {
+    				validado = true;
+    			}
+    		} catch (RuntimeException e) {
+    			System.out.println(e.getMessage());
+    		}
+    	} while (!validado);
+    	
+    	return caractere.toUpperCase();
+    }
+	
     public static String validarString(String mensagem) {
     	boolean validado = false;
     	String string = null;

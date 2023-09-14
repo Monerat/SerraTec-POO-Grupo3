@@ -161,11 +161,21 @@ public class Principal {
 	}
 	
 	public static void opcaoCrudPedido(int opcao) {
+		boolean parar = false;
+		String adcionar;
 		switch (opcao) {
 		case 1:
 			cadastrarPedido();
-			System.out.println("Selecione o código referente a data do pedido acima para incluir os produtos: ");
-			cadastrarPedidoItem();
+			do {
+				adcionar = Util.validarChar("Deseja adicionar mais 1 produto ao pedido?(S ou N)");
+				if (adcionar.equals("S")) {
+					System.out.println("Selecione o código referente a data do pedido acima para incluir os produtos: ");
+					cadastrarPedidoItem();
+				}
+				else {
+					parar = true;
+				}
+			}while(!parar);
 			break;
 		case 2:
 			alterarPedido();
