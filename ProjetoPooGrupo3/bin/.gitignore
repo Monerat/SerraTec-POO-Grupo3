@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-/classes/
 /dao/
+<<<<<<< HEAD
 /dml/
 /lista/
 /principal/
@@ -12,3 +11,5 @@
 /contantes/
 >>>>>>> s_Luan
 /conexao/
+=======
+>>>>>>> s_Luan
