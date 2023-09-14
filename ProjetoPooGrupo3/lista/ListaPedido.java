@@ -42,7 +42,7 @@ public class ListaPedido {
 		        System.out.format("%-30s | ", linha[j]);
 		    }
 		    System.out.println();
-		}
+		}	
 	}
 	
 	public void adicionarPedidoLista(Pedido p) {

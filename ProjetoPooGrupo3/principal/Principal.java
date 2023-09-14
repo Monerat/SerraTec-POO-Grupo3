@@ -69,18 +69,27 @@ public class Principal {
 		}
 
 	
-	public static int subMenu() {
+	public static int subMenu(int opcao) {
 		System.out.println(Util.LINHAD);
 		System.out.println(Util.CABECALHO);
 		System.out.println(Util.MENU);
 		System.out.println(Util.LINHAD);
+		if(opcao != 6) {
+			System.out.println("""
+					
+					1) Cadastrar
+					2) Alterar
+					3) Excluir
+					4) Listar
+					""");
+		} else {
 		System.out.println("""
 				
-				1) Cadastrar
 				2) Alterar
 				3) Excluir
 				4) Listar
 				""");
+		}
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
 	}
@@ -164,6 +173,8 @@ public class Principal {
 		switch (opcao) {
 		case 1:
 			cadastrarPedido();
+			System.out.println("Selecione o código referente a data do pedido acima para incluir os produtos: ");
+			cadastrarPedidoItem();
 			break;
 		case 2:
 			alterarPedido();
@@ -241,22 +252,22 @@ public class Principal {
 		
 			switch (opcao) {
 			case 1:
-				opcaoCrudEmpresa(subMenu());
+				opcaoCrudEmpresa(subMenu(opcao));
 				break;
 			case 2:
-				opcaoCrudProduto(subMenu());
+				opcaoCrudProduto(subMenu(opcao));
 				break;
 			case 3:
-				opcaoCrudProdEmpr(subMenu());
+				opcaoCrudProdEmpr(subMenu(opcao));
 				break;
 			case 4:
-				opcaoCrudCliente(subMenu());
+				opcaoCrudCliente(subMenu(opcao));
 				break;
 			case 5:
-				opcaoCrudPedido(subMenu());
+				opcaoCrudPedido(subMenu(opcao));
 				break;
 			case 6:
-				opcaoCrudPedidoItem(subMenu());
+				opcaoCrudPedidoItem(subMenu(opcao));
 				break;
 			case 7:
 				opcaoQuery(subMenuQuery());
