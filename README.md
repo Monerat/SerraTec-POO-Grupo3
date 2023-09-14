@@ -38,10 +38,10 @@ Criar um banco de dados que contenha:
  - ``Cliente``
  - ``Pedido``
 
-3. Cada item deve possuir menu para permitir o CRUD (persistência de dados no banco Postgres) a localização e o relatório.
-   - 1. Deve permitir selecionar um cliente (por código e/ou nome) e mostrar todos os pedidos que possui. ✔️
-   - 2. Deve permitir selecionar um produto (por código e/ou nome) e mostrar todos os pedidos que possui. ✔️
-   - 3. Deve permitir selecionar um pedido (por código e/ou data) e mostrar o seu cliente e todos os produtos que possui. ✔️
+3. Cada item deve possuir menu para permitir o CRUD (persistência de dados no banco Postgres) a localização e o relatório. ✔️
+   - 1. Deve permitir selecionar um cliente (por código e/ou nome) e mostrar todos os pedidos que possui.
+   - 2. Deve permitir selecionar um produto (por código e/ou nome) e mostrar todos os pedidos que possui.
+   - 3. Deve permitir selecionar um pedido (por código e/ou data) e mostrar o seu cliente e todos os produtos que possui.
    - 4. Deve possuir os dados da empresa que vende o produto para o cliente.
 
 4. Deve ser entregue o SQL de criação das tabelas e o projeto Java completo. ✔️
