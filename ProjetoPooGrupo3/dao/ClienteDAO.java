@@ -54,7 +54,8 @@ public class ClienteDAO {
 		sql += " cpf = ?,";
 		sql += " telefone = ?,";
 		sql += " endereco = ?,";
-		sql += " data_nasc = ?";
+		sql += " data_nasc = ?,";
+		sql += " email = ?";
 		sql += " where idcliente = ?";
 		
 		try {
@@ -72,7 +73,8 @@ public class ClienteDAO {
 			pAlteracao.setString(3, cliente.getTelefone());
 			pAlteracao.setString(4, cliente.getEndereco());
 			pAlteracao.setDate(5, Date.valueOf(cliente.getData_nasc()));
-			pAlteracao.setInt(2, cliente.getIdcliente());
+			pAlteracao.setString(6, cliente.getEmail());
+			pAlteracao.setInt(7, cliente.getIdcliente());
 			
 			return pAlteracao.executeUpdate();
 			

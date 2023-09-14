@@ -59,7 +59,6 @@ public class Cliente extends Pessoa {
 		c.setNome(Util.validarString("Informe o Nome do Cliente: "));
 		c.setCpf(Util.validarCPF("Informe o CPF do Cliente: "));
 		c.setTelefone(Util.validarTelefone("Informe o Telefone do Cliente: "));
-		System.out.println("Informe o Email do Cliente: ");
 		c.setEmail(Util.validarEmail("Informe o Email do Cliente: "));
 		c.setData_nasc(Util.validarData("Informe a Data de Nascimento do Cliente: "));
 		
