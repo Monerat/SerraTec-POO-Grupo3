@@ -74,22 +74,13 @@ public class Principal {
 		System.out.println(Util.CABECALHO);
 		System.out.println(Util.MENU);
 		System.out.println(Util.LINHAD);
-		if(opcao != 6) {
-			System.out.println("""
+		System.out.println("""
 					
 					1) Cadastrar
 					2) Alterar
 					3) Excluir
 					4) Listar
 					""");
-		} else {
-		System.out.println("""
-				
-				2) Alterar
-				3) Excluir
-				4) Listar
-				""");
-		}
 		System.out.println(Util.LINHAD);
 		return Util.validarInteiro("Informe uma opção:");
 	}
