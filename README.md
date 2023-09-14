@@ -45,4 +45,7 @@ Criar um banco de dados que contenha:
    - 4. Deve possuir os dados da empresa que vende o produto para o cliente.
 
 4. Deve ser entregue o SQL de criação das tabelas e o projeto Java completo. ✔️
-5. Deve ser entregue o Diagrama de Classes (UML)
+5. Deve ser entregue o Diagrama de Classes (UML) ✔️
+   
+### UML - Linguagem de modelagem unificada
+![DER](/ProjetoPooGrupo3/UML.png)
