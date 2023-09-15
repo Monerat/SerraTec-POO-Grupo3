@@ -19,23 +19,36 @@ public class QueryDAO {
 	
 	public void selectCliente(Cliente cliente) {
 		ResultSet tabela;
-		String sql = "SELECT cli.nome, pe.idpedido, pe.data_ped, em.nome_fantasia, em.razao_social FROM "+ this.schema + ".cliente cli";
+		String sql = "SELECT cli.nome, pe.idpedido, pe.data_ped, em.nome_fantasia, pr.nome_prod, peit.qtd, prem.vl_un, ";
+		sql += "SUM(peit.qtd * prem.vl_un) AS subtotal,";
+		sql += "(SELECT SUM(prem.vl_un * peit.qtd)";
+		sql	+= " FROM sistema.pedidoitem peit";
+		sql += " JOIN sistema.prodempr prem ON prem.idprodempr = peit.idprodempr";
+		sql += " JOIN sistema.produto pr ON pr.idproduto = prem.idproduto";
+		sql += " WHERE peit.idpedido = pe.idpedido";
+		sql += " ) AS total_bruto_pedido";
+		sql += " FROM "+ this.schema + ".cliente cli";
 		sql += " LEFT JOIN "+ this.schema + ".pedido pe ON pe.idcliente = cli.idcliente";
 		sql += " LEFT JOIN "+ this.schema + ".pedidoitem peit ON peit.idpedido = pe.idpedido";
 		sql += " LEFT JOIN "+ this.schema + ".prodempr prem ON prem.idprodempr = peit.idprodempr";
+		sql += " LEFT JOIN "+ this.schema + ".produto pr ON prem.idproduto = pr.idproduto";
 		sql += " LEFT JOIN "+ this.schema + ".empresa em ON em.idempresa = prem.idempresa";
 		sql += " WHERE cli.idcliente = "+cliente.getIdcliente();
+		sql += " GROUP BY cli.nome, pe.idpedido, pe.data_ped, em.nome_fantasia, pr.nome_prod, peit.qtd, prem.vl_un";
 		
 		try {
 			tabela=conexao.query(sql);
 			tabela.beforeFirst();
-			System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | \n","Nome do Cliente","Id Pedido","Data do Pedido","Empresa: Nome Fantasia","Empresa: Razão Social");
-			for(int i = 0; i < 5; i++) {
+			tabela.next();
+			System.out.println(" Cliente: " + tabela.getString("nome") + "\n");
+			System.out.format(" %-30s | %-30s | %-30s | %-30s | %-30s | %-30s | %-30s | %-30s | \n","Código do Pedido","Data do Pedido","Empresa","Nome do Produto","Quant.","Vl Unit.", "Vl Total Prod.", "Total Pedido");
+			for(int i = 0; i < 8; i++) {
 				System.out.print(Util.LINHAD);
 			}
+			tabela.beforeFirst();
 			System.out.println();
 			while(tabela.next()) {
-				System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | ",tabela.getString("nome"),tabela.getString("idpedido"),Util.validaDataTransString(tabela.getDate("data_ped").toLocalDate()),tabela.getString("nome_fantasia"),tabela.getString("razao_social"));
+				System.out.format(" %-30s | %-30s | %-30s | %-30s | %-30s | %-30s | %-30s | %-30s | ",tabela.getString("idpedido"),Util.validaDataTransString(tabela.getDate("data_ped").toLocalDate()),tabela.getString("nome_fantasia"),tabela.getString("nome_prod"),tabela.getString("qtd"),tabela.getString("vl_un"),tabela.getString("subtotal"),tabela.getString("total_bruto_pedido"));
 				System.out.println();
 			}
 			
@@ -49,9 +62,10 @@ public class QueryDAO {
 		}
 	}
 	
+	
 	public void selectProduto(Produto produto) {
 		ResultSet tabela;
-		String sql = "SELECT pr.idproduto, pr.nome_prod, p.idpedido, em.nome_fantasia, em.razao_social FROM "+ this.schema + ".produto pr";
+		String sql = "SELECT pr.idproduto, pr.nome_prod, p.idpedido, em.nome_fantasia FROM "+ this.schema + ".produto pr";
 		sql += " LEFT JOIN "+ this.schema + ".prodempr pe ON pe.idproduto = pr.idproduto";
 		sql += " LEFT JOIN "+ this.schema + ".empresa em ON em.idempresa = pe.idempresa";
 		sql += " LEFT JOIN "+ this.schema + ".pedidoitem pi ON pi.idprodempr = pe.idprodempr";
@@ -61,13 +75,16 @@ public class QueryDAO {
 		try {
 			tabela=conexao.query(sql);
 			tabela.beforeFirst();
-			System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | \n","Id Produto","Nome do Produto","Id Pedido","Empresa: Nome Fantasia","Empresa: Razão Social");
-			for(int i = 0; i < 5; i++) {
+			tabela.next();
+			System.out.format(" Código do Produto: %s | Produto: %s |\n",tabela.getString("idproduto"),tabela.getString("nome_prod"));
+			System.out.format(" %-30s | %-30s | \n","Código do Pedido","Empresa");
+			for(int i = 0; i < 2; i++) {
 				System.out.print(Util.LINHAD);
 			}
+			tabela.beforeFirst();
 			System.out.println();
 			while(tabela.next()) {
-				System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | ",tabela.getString("idproduto"),tabela.getString("nome_prod"),tabela.getString("idpedido"),tabela.getString("nome_fantasia"),tabela.getString("razao_social"));
+				System.out.format(" %-30s | %-30s | ",tabela.getString("idpedido"),tabela.getString("nome_fantasia"));
 				System.out.println();
 			}
 			
@@ -81,26 +98,40 @@ public class QueryDAO {
 		}
 	}
 	
+	
+	
 	public void selectPedido(Pedido pedido) {
 		ResultSet tabela;
-		String sql = "SELECT c.nome, pd.nome_prod, p.idpedido, em.nome_fantasia, em.razao_social FROM "+ this.schema + ".pedido p";
-		sql += " LEFT JOIN "+ this.schema + ".cliente c ON c.idcliente = p.idcliente";
-		sql += " LEFT JOIN "+ this.schema + ".pedidoitem pi ON pi.idpedido = p.idpedido";
-		sql += " LEFT JOIN "+ this.schema + ".prodempr pe ON pe.idprodempr = pi.idprodempr";
-		sql += " LEFT JOIN "+ this.schema + ".produto pd ON pd.idproduto = pe.idproduto";
-		sql += " LEFT JOIN "+ this.schema + ".empresa em ON em.idempresa = pe.idempresa";
-		sql += " WHERE p.idpedido = " + pedido.getIdpedido();
+		String sql = "SELECT cli.nome, pe.idpedido, pe.data_ped, em.nome_fantasia, pr.nome_prod, peit.qtd, prem.vl_un, pr.idproduto, ";
+		sql += " SUM(peit.qtd * prem.vl_un) AS subtotal,";
+		sql += " (SELECT SUM(prem.vl_un * peit.qtd)";
+		sql	+= " FROM sistema.pedidoitem peit";
+		sql += " JOIN sistema.prodempr prem ON prem.idprodempr = peit.idprodempr";
+		sql += " JOIN sistema.produto pr ON pr.idproduto = prem.idproduto";
+		sql += " WHERE peit.idpedido = pe.idpedido";
+		sql += " ) AS total_bruto_pedido";
+		sql += " FROM "+ this.schema + ".pedido pe";
+		sql += " LEFT JOIN "+ this.schema + ".cliente cli ON cli.idcliente = pe.idcliente";
+		sql += " LEFT JOIN "+ this.schema + ".pedidoitem peit ON peit.idpedido = pe.idpedido";
+		sql += " LEFT JOIN "+ this.schema + ".prodempr prem ON prem.idprodempr = peit.idprodempr";
+		sql += " LEFT JOIN "+ this.schema + ".produto pr ON pr.idproduto = prem.idproduto";
+		sql += " LEFT JOIN "+ this.schema + ".empresa em ON em.idempresa = prem.idempresa";
+		sql += " WHERE pe.idpedido = " + pedido.getIdpedido();
+		sql += " GROUP BY cli.nome, pe.idpedido, pe.data_ped, em.nome_fantasia, pr.nome_prod, peit.qtd, prem.vl_un, pr.idproduto";
 		
 		try {
 			tabela=conexao.query(sql);
 			tabela.beforeFirst();
-			System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | \n","Nome do Cliente","Nome do Produto","Id Pedido","Empresa: Nome Fantasia","Empresa: Razão Social");
+			tabela.next();
+			System.out.format("Cliente : %s | Código do Pedido: %s | Data do Pedido %s | Valor Total do Pedido %s | \n", tabela.getString("nome"), tabela.getString("idpedido"), Util.validaDataTransString(tabela.getDate("data_ped").toLocalDate()), tabela.getString("total_bruto_pedido"));
+			System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | %-30s | \n","Código","Nome do Produto","Quant.","Vl Unit.","Vl Total","Empresa");
 			for(int i = 0; i < 5; i++) {
 				System.out.print(Util.LINHAD);
 			}
+			tabela.beforeFirst();
 			System.out.println();
 			while(tabela.next()) {
-				System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | ",tabela.getString("nome"),tabela.getString("nome_prod"),tabela.getString("idpedido"),tabela.getString("nome_fantasia"),tabela.getString("razao_social"));
+				System.out.format("%-30s | %-30s | %-30s | %-30s | %-30s | %-30s | ",tabela.getString("idproduto"),tabela.getString("nome_prod"),tabela.getString("qtd"),tabela.getString("vl_un"),tabela.getString("subtotal"),tabela.getString("nome_fantasia"));
 				System.out.println();
 			}
 		} catch (Exception e) {
