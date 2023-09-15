@@ -1,21 +1,7 @@
+/classes/
+/contantes/
 /dao/
-<<<<<<< HEAD
+/conexao/
 /dml/
 /lista/
 /principal/
-=======
-/.project
-/.settings/
-/principal/
-/classes/
-/contantes/
->>>>>>> s_Luan
-/conexao/
-=======
->>>>>>> s_Luan
-<<<<<<< HEAD
-/UML.drawio
-/UML.png
-=======
->>>>>>> s_Luan
-/dadosConexao/

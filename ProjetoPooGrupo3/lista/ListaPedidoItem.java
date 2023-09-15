@@ -24,7 +24,7 @@ public class ListaPedidoItem {
 	public void imprimirPedidoItens() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Pedido Item","Quantidade","Id Pedido", "Id Produto-Empresa"});
+		tabela.add(new String[] {"Código do Pedido Item","Quantidade","Código do Pedido", "Código do Produto-Empresa"});
 		for (PedidoItem pedidoItem : pedidoItens) {
 			tabela.add(new String[] {String.valueOf(pedidoItem.getIdpedidoitem()), String.valueOf(pedidoItem.getQtd()), String.valueOf(pedidoItem.getIdpedido()), String.valueOf(pedidoItem.getIdprodempr())});
 		}

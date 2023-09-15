@@ -19,14 +19,14 @@ import lista.ListaPedido;
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,schema);
 		
 		listaPedidos.imprimirPedidos();
-		pdi.setIdpedido(Util.validarInteiro("Insira o Id Pedido: "));
+		pdi.setIdpedido(Util.validarInteiro("Insira o Código do Pedido: "));
 		System.out.println();
 		
 		listaProdEmpr.imprimirProdEmpr();
-		pdi.setIdprodempr(Util.validarInteiro("Insira o Id Produto-Empresa: "));
+		pdi.setIdprodempr(Util.validarInteiro("Insira o Código do Produto-Empresa: "));
 		System.out.println();
 		
-		pdi.setQtd(Util.validarDouble("Insira a quantidade: "));
+		pdi.setQtd(Util.validarDouble("Insira a Quantidade: "));
 
 		return pdi;
 	}
@@ -37,14 +37,14 @@ import lista.ListaPedido;
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,schema);
 		
 		listaPedidos.imprimirPedidos();
-		pi.setIdpedido(Util.validarInteiro("Insira o Id Pedido: "));
+		pi.setIdpedido(Util.validarInteiro("Insira o Código Pedido: "));
 		System.out.println();
 		
 		listaProdEmpr.imprimirProdEmpr();
-		pi.setIdprodempr(Util.validarInteiro("Insira o Id Produto-Empresa: "));
+		pi.setIdprodempr(Util.validarInteiro("Insira o Código do Produto-Empresa: "));
 		System.out.println();
 		
-		pi.setQtd(Util.validarDouble("Insira a quantidade: "));
+		pi.setQtd(Util.validarDouble("Insira a Quantidade: "));
 		System.out.println();
 		
 		return pi;
@@ -81,5 +81,4 @@ import lista.ListaPedido;
 	public void setIdprodempr(int idprodempr) {
 		this.idprodempr = idprodempr;
 	}
-
 }

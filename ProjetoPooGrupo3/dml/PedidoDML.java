@@ -12,14 +12,12 @@ public class PedidoDML {
 		cdao.incluirPedido(pe);
 	}
 	
-
 	public static void alterarPedido(Conexao con, String schema, Pedido pe) {
 		PedidoDAO cdao = new PedidoDAO(con, schema);
 		
 		cdao.alterarPedido(pe);
 	}
 	
-
 	public static void excluirPedido(Conexao con, String schema, Pedido pe) {
 		PedidoDAO cdao = new PedidoDAO(con, schema);
 		

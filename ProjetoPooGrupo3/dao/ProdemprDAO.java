@@ -34,7 +34,6 @@ public class ProdemprDAO {
 			System.err.println(e);
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public int incluirProdEmpr(ProdEmpr prodemrp) {
@@ -127,6 +126,5 @@ public class ProdemprDAO {
 		tabela = conexao.query(sql);
 			
 		return tabela;
-	}
-	
+	}	
 }

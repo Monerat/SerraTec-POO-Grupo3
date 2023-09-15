@@ -25,7 +25,7 @@ public class ListaPedido {
 	public void imprimirPedidos() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		String aux;
-		tabela.add(new String[] {"Id Pedido","Data do pedido","Id Cliente"});
+		tabela.add(new String[] {"Código do Pedido","Data do pedido","Código do Cliente"});
 		for (Pedido pedido : pedidos) {
 			aux = Util.validaDataTransString(pedido.getData_ped());
 			tabela.add(new String[] {String.valueOf(pedido.getIdpedido()),aux,String.valueOf(pedido.getIdcliente())});
@@ -94,5 +94,4 @@ public class ListaPedido {
 			return null;
 		}
 	}
-	
 }

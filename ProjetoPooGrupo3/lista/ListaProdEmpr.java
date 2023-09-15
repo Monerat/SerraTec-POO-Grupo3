@@ -24,7 +24,7 @@ public class ListaProdEmpr {
 	public void imprimirProdEmpr() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Produto-Empresa","Valor unitário", "Id Produto", "Id Empresa"});
+		tabela.add(new String[] {"Código do Produto-Empresa","Valor unitário", "Código do Produto", "Código da Empresa"});
 		for (ProdEmpr prodEmpr : prodEmprs) {
 			tabela.add(new String[] {String.valueOf(prodEmpr.getIdprodempr()), String.valueOf(prodEmpr.getVl_un()), String.valueOf(prodEmpr.getIdproduto()), String.valueOf(prodEmpr.getIdempresa())});
 		}

@@ -33,7 +33,6 @@ public class ProdutoDAO {
 			System.err.println(e);
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public int incluirProduto(Produto produto) {

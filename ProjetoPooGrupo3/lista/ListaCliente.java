@@ -60,7 +60,7 @@ public class ListaCliente {
 	public void imprimirClientes() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		String aux;
-		tabela.add(new String[] {"Id Cliente","Nome", "CPF", "Telefone","Email", "Data de Nascimento","Endereco"});
+		tabela.add(new String[] {"Código do Cliente","Nome", "CPF", "Telefone","Email", "Data de Nascimento","Endereco"});
 		for (Cliente cliente : clientes) {
 			aux=Util.validaDataTransString(cliente.getData_nasc());
 			tabela.add(new String[] {String.valueOf(cliente.getIdcliente()),cliente.getNome(),cliente.getCpf(), cliente.getTelefone(), cliente.getEmail(), aux, cliente.getEndereco()});

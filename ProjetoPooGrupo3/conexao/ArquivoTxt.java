@@ -12,34 +12,16 @@ public class ArquivoTxt {
 	File Arquivo;
 	private DadosConexao data = new DadosConexao();	
 	
-	/**
-	 * 
-	 * @author Ricardo de Jesus Oliveira
-	 * @return Retorna os dados de conexão
-	 */
 	public DadosConexao getData() {
 		return data;
 	}
 	
-	/**
-	 *  Construtor da classe
-	 *  
-	 *  @autor Ricardo de Jesus Oliveira
-	 *  
-	 */
 	public ArquivoTxt(String nmArquivo) {
 		this.nmArquivo = nmArquivo;
 		File Arq = new File(nmArquivo);
 		Arquivo = Arq;
 	}
 	
-	/**
-	 * Cria um novo arquivo, se não existir.
-	 * 
-	 * 
-	 * @author Ricardo de Jesus Oliveira
-	 * @return Retorna verdadeiro se o arquivo for criado ou se já existir.
-	 */
 	public boolean criarArquivo() {
 		try {
 			Arquivo.createNewFile();		
@@ -123,18 +105,12 @@ public class ArquivoTxt {
 			!(data.getPorta()==null) &&
 			!(data.getSenha()==null) &&
 			!(data.getUser()==null)) { 
-			//result = !data.getBanco().isBlank();
 			result = true;
 			result = result && !data.getBanco().isEmpty();
-			//result = result && !data.getBd().isBlank();
 			result = result && !data.getBd().isEmpty();
-			//result = result && !data.getLocal().isBlank();
 			result = result && !data.getLocal().isEmpty();
-			//result = result && !data.getPorta().isBlank();
 			result = result && !data.getPorta().isEmpty();
-			//result = result && !data.getSenha().isBlank();
 			result = result && !data.getSenha().isEmpty();
-			//result = result && !data.getUser().isBlank();
 			result = result && !data.getUser().isEmpty();
 		} else
 			result = false;
@@ -142,15 +118,7 @@ public class ArquivoTxt {
 		return result;
 	}
 	
-	/**
-	 * Exclui um arquivo existente
-	 * 
-	 * @author Ricardo de Jesus Oliveira
-	 * @return Retorna verdadeiro se a exclusão for realizada.
-	 */
 	public boolean apagarArquivo() {
 		return Arquivo.delete();
-	}
-	
-	
+	}	
 }

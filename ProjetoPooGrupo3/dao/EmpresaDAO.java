@@ -33,7 +33,6 @@ public class EmpresaDAO {
 			System.err.println(e);
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public int incluirEmpresa(Empresa empresa) {

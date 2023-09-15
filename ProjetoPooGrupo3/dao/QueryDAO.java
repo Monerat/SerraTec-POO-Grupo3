@@ -62,7 +62,6 @@ public class QueryDAO {
 		}
 	}
 	
-	
 	public void selectProduto(Produto produto) {
 		ResultSet tabela;
 		String sql = "SELECT pr.idproduto, pr.nome_prod, p.idpedido, em.nome_fantasia FROM "+ this.schema + ".produto pr";
@@ -97,8 +96,6 @@ public class QueryDAO {
 			}
 		}
 	}
-	
-	
 	
 	public void selectPedido(Pedido pedido) {
 		ResultSet tabela;

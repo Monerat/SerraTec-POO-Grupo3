@@ -24,7 +24,7 @@ public class ListaEmpresa {
 	public void imprimirEmpresas() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Empresa","Nome Fantasia","Razão Social"});
+		tabela.add(new String[] {"Código da Empresa","Nome Fantasia","Razão Social"});
 		for (Empresa empresa : empresas) {
 			tabela.add(new String[] {String.valueOf(empresa.getIdempresa()),empresa.getNome_fantasia(),empresa.getRazao_social()});
 		}

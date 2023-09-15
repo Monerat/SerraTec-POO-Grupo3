@@ -24,7 +24,7 @@ public class ListaProduto {
 	public void imprimirProdutos() {
 		ArrayList<String[]> tabela = new ArrayList<>();
 		
-		tabela.add(new String[] {"Id Produto","Nome Produto","Descrição"});
+		tabela.add(new String[] {"Código do Produto","Nome do Produto","Descrição"});
 		for (Produto produto : produtos) {
 			tabela.add(new String[] {String.valueOf(produto.getIdproduto()),produto.getNome_prod(),produto.getDescricao()});
 		}

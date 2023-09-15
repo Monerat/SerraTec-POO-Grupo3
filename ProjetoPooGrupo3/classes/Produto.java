@@ -10,7 +10,7 @@ public class Produto {
 	public static Produto cadastrar() {
 		
 		Produto p = new Produto();
-		p.setNome_prod(Util.validarString("Insira o nome Produto: "));
+		p.setNome_prod(Util.validarString("Insira o Nome do Produto: "));
 		p.setDescricao(Util.validarString("Insira a Descrição do Produto: "));
 		
 		return p;
@@ -18,7 +18,7 @@ public class Produto {
 	
 	public static Produto alterar(Produto prod) {
 		
-		prod.setNome_prod(Util.validarString("Insira o nome Produto: "));
+		prod.setNome_prod(Util.validarString("Insira o Nome do Produto: "));
 		prod.setDescricao(Util.validarString("Insira a Descrição do Produto: "));
 		
 		return prod;
@@ -26,7 +26,7 @@ public class Produto {
 	
 	public static Produto select() {
 		Produto c = new Produto();
-		c.setIdproduto(Util.validarInteiro("Informe o id do Produto: "));
+		c.setIdproduto(Util.validarInteiro("Informe o Código do Produto: "));
 		return c;
 	}
 
@@ -53,5 +53,4 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 }

@@ -137,7 +137,6 @@ public class CreateDAO {
 		}
 	}
 	
-		
 	private static void criarEntidadeCliente(Conexao con, String schema) {
 		String entidade = "cliente";
 		
@@ -167,6 +166,7 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "descricao"	 , "varchar(200)", false, false, null, null);
 		}		
 	}
+	
 	private static void criarEntidadePedido(Conexao con, String schema) {
 		String entidade = "pedido";
 		if (!entidadeExists(con, schema, entidade))		
@@ -178,8 +178,7 @@ public class CreateDAO {
 			criarCampo(con, schema, entidade, "idcliente"	 , "int", false, true, "cliente", "idcliente");
 		}
 	}
-			
-			
+				
 	private static void criarEntidadeEmpresa(Conexao con, String schema) {
 		String entidade = "empresa";
 
@@ -286,6 +285,4 @@ public class CreateDAO {
 		
 		return atributoExist;
 	}
-	
-
 }

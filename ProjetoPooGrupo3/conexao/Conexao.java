@@ -38,7 +38,6 @@ public class Conexao {
 		try {
 			Class.forName(getDriverjdbc());
 			setC(DriverManager.getConnection(getStr_conexao(), getUser(), getSenha()));
-			//setStatment(getC().createStatement());
 			setStatment(getC().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE, 
 					ResultSet.CONCUR_UPDATABLE));
@@ -56,13 +55,12 @@ public class Conexao {
 			ex.printStackTrace();
 		}
 	}
+	
 	public ResultSet query(String query){
 		try {
 			return getStatment().executeQuery(query);
 		}catch (NullPointerException | SQLException ex) {
 			if (!ex.getLocalizedMessage().contentEquals("Nenhum resultado foi retornado pela consulta.")) {
-				//System.out.println(ex.getMessage());
-				//System.out.println(ex.getErrorCode());
 				ex.printStackTrace();
 			} else if (ex.getLocalizedMessage().contentEquals("is null")) {
 				System.err.println("Verifique se foi chamado o conect");

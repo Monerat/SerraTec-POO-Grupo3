@@ -91,8 +91,6 @@ public class Util {
 			}
 		} while (!validado);
 		
-		//in.close();
-		
 		return numero;
 	}
 	
@@ -113,8 +111,6 @@ public class Util {
 				System.out.println("Informe um número válido - " + e.getMessage());
 			}
 		} while (!validado);
-		
-		//in.close();
 		
 		return numero;
 	}
@@ -150,7 +146,7 @@ public class Util {
     public static String validarString(String mensagem) {
     	boolean validado = false;
     	String string = null;
-    	Pattern p = Pattern.compile("^[ a-zA-Zà-úÀ-Ú0-9.,ç]*$");
+    	Pattern p = Pattern.compile("^[ a-zA-Zà-úÀ-Ú0-9.,&ç]*$");
     	
     	do {
     		System.out.println(mensagem);
@@ -181,7 +177,6 @@ public class Util {
     		System.out.println(mensagem);
     		cpf = in.nextLine();
     		
-    		// Valida o CPF
     		valido = p.matcher(cpf).matches();
 
     		if (!valido) {
@@ -201,7 +196,6 @@ public class Util {
     		System.out.println(mensagem);
     		telefone = in.nextLine();
 
-    		// Valida o Telefone
     		valido = p.matcher(telefone).matches();
 
     		if (!valido) {
@@ -221,7 +215,6 @@ public class Util {
     		System.out.println(mensagem);
     		email = in.nextLine();
 
-    		// Valida o email
     		valido = p.matcher(email).matches();
 
     		if (!valido) {
@@ -241,7 +234,6 @@ public class Util {
             System.out.println(mensagem);
             uf = in.nextLine();
 
-            // Valida o UF
             valido = p.matcher(uf).matches();
 
             if (!valido) {

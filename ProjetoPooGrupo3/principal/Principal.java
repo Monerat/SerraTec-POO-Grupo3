@@ -20,7 +20,6 @@ public class Principal {
 	public static final String PATH = "dadosConexao\\";
 	public static final String SFILE = "DadosConexao.ini";
 	
-	
 	public static void main(String[] args) {
 		
 		if (configInicial()) {
@@ -112,7 +111,6 @@ public class Principal {
 		
 		}
 
-	
 	public static int subMenu(int opcao) {
 		System.out.println(Util.LINHAD);
 		System.out.println(Util.CABECALHO);
@@ -355,74 +353,73 @@ public class Principal {
 	public static void alterarCliente() {
 		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
 		listaCliente.imprimirClientes();
-		ClienteDML.alterarCliente(con, SCHEMA, Cliente.alterar(listaCliente.localizarCliente(Util.validarInteiro("Informe o Id do Cliente que deseja alterar:"))));
+		ClienteDML.alterarCliente(con, SCHEMA, Cliente.alterar(listaCliente.localizarCliente(Util.validarInteiro("Informe o Código do Cliente que deseja alterar:"))));
 	}
 	
 	public static void alterarEmpresa() {
 		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
 		listaEmpresa.imprimirEmpresas();
-		EmpresaDML.alterarEmpresa(con, SCHEMA, Empresa.alterar(listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Id da Empresa que deseja alterar:"))));
+		EmpresaDML.alterarEmpresa(con, SCHEMA, Empresa.alterar(listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Código da Empresa que deseja alterar:"))));
 	}
 	
 	public static void alterarPedido() {
 		ListaPedido listaPedido = new ListaPedido(con,SCHEMA);
 		listaPedido.imprimirPedidos();
-		PedidoDML.alterarPedido(con, SCHEMA, Pedido.alterar(con,SCHEMA,listaPedido.localizarPedido(Util.validarInteiro("Informe o Id da Pedido que deseja alterar:"))));
+		PedidoDML.alterarPedido(con, SCHEMA, Pedido.alterar(con,SCHEMA,listaPedido.localizarPedido(Util.validarInteiro("Informe o Código do Pedido que deseja alterar:"))));
 	}
 	
 	public static void alterarPedidoItem() {
 		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
 		listaPedidoItem.imprimirPedidoItens();
-		PedidoItemDML.alterarPedidoItem(con, SCHEMA, PedidoItem.alterar(con,SCHEMA,listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja alterar:"))));
+		PedidoItemDML.alterarPedidoItem(con, SCHEMA, PedidoItem.alterar(con,SCHEMA,listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Código do Pedido Item que deseja alterar:"))));
 	}
 	
 	public static void alterarProduto() {
 		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
 		listaProduto.imprimirProdutos();
-		ProdutoDML.alterarProduto(con, SCHEMA, Produto.alterar(listaProduto.localizarProduto(Util.validarInteiro("Informe o Id da Produto que deseja alterar:"))));
+		ProdutoDML.alterarProduto(con, SCHEMA, Produto.alterar(listaProduto.localizarProduto(Util.validarInteiro("Informe o Código do Produto que deseja alterar:"))));
 	}
 	
 	public static void alterarProdEmpr() {
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
 		listaProdEmpr.imprimirProdEmpr();
-		ProdEmprDML.alterarProdEmpr(con, SCHEMA, ProdEmpr.alterar(con,SCHEMA,listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Id do Produto-Empresa que deseja alterar:"))));
+		ProdEmprDML.alterarProdEmpr(con, SCHEMA, ProdEmpr.alterar(con,SCHEMA,listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Código do Produto-Empresa que deseja alterar:"))));
 	}
 	
 	public static void excluirCliente() {
 		ListaCliente listaCliente = new ListaCliente(con,SCHEMA);
 		listaCliente.imprimirClientes();
-		ClienteDML.excluirCliente(con, SCHEMA, listaCliente.localizarCliente(Util.validarInteiro("Informe o Id do Cliente que deseja excluir:")));
-		
+		ClienteDML.excluirCliente(con, SCHEMA, listaCliente.localizarCliente(Util.validarInteiro("Informe o Código do Cliente que deseja excluir:")));	
 	}
 	
 	public static void excluirEmpresa() {
 		ListaEmpresa listaEmpresa = new ListaEmpresa(con,SCHEMA);
 		listaEmpresa.imprimirEmpresas();
-		EmpresaDML.excluirEmpresa(con, SCHEMA, listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Id da Empresa que deseja excluir:")));
+		EmpresaDML.excluirEmpresa(con, SCHEMA, listaEmpresa.localizarEmpresa(Util.validarInteiro("Informe o Código da Empresa que deseja excluir:")));
 	}
 	
 	public static void excluirPedido() {
 		ListaPedido listaPedido = new ListaPedido(con,SCHEMA);
 		listaPedido.imprimirPedidos();
-		PedidoDML.excluirPedido(con, SCHEMA, listaPedido.localizarPedido(Util.validarInteiro("Informe o Id do Pedido que deseja excluir:")));
+		PedidoDML.excluirPedido(con, SCHEMA, listaPedido.localizarPedido(Util.validarInteiro("Informe o Código do Pedido que deseja excluir:")));
 	}
 	
 	public static void excluirPedidoItem() {
 		ListaPedidoItem listaPedidoItem = new ListaPedidoItem(con,SCHEMA);
 		listaPedidoItem.imprimirPedidoItens();
-		PedidoItemDML.excluirPedidoItem(con, SCHEMA, listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Id do Pedido Item que deseja excluir:")));
+		PedidoItemDML.excluirPedidoItem(con, SCHEMA, listaPedidoItem.localizarPedidoItem(Util.validarInteiro("Informe o Código do Pedido Item que deseja excluir:")));
 	}
 	
 	public static void excluirProduto() {
 		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
 		listaProduto.imprimirProdutos();
-		ProdutoDML.excluirProduto(con, SCHEMA, listaProduto.localizarProduto(Util.validarInteiro("Informe o Id do Produto que deseja excluir:")));
+		ProdutoDML.excluirProduto(con, SCHEMA, listaProduto.localizarProduto(Util.validarInteiro("Informe o Código do Produto que deseja excluir:")));
 	}
 	
 	public static void excluirProdEmpr() {
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
 		listaProdEmpr.imprimirProdEmpr();
-		ProdEmprDML.excluirProdEmpr(con, SCHEMA, listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Id do Produto-Empresa que deseja excluir:")));
+		ProdEmprDML.excluirProdEmpr(con, SCHEMA, listaProdEmpr.localizarProdEmpr(Util.validarInteiro("Informe o Código do Produto-Empresa que deseja excluir:")));
 	}
 	
 	public static void listarCliente() {
@@ -449,6 +446,7 @@ public class Principal {
 		ListaProduto listaProduto = new ListaProduto(con,SCHEMA);
 		listaProduto.imprimirProdutos();
 	}
+	
 	public static void listarProdEmpr() {
 		ListaProdEmpr listaProdEmpr = new ListaProdEmpr(con,SCHEMA);
 		listaProdEmpr.imprimirProdEmpr();
@@ -464,6 +462,5 @@ public class Principal {
 	
 	public static void queryPedClienteProdutos() {
 		QueryDML.querySelectPedido(con, SCHEMA, Pedido.select());
-	}
-	
+	}	
 }

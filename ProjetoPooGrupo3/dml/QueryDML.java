@@ -7,6 +7,7 @@ import conexao.Conexao;
 import dao.QueryDAO;
 
 public class QueryDML {
+	
 	public static void querySelectCliente(Conexao con, String schema, Cliente c) {
 		QueryDAO cdao = new QueryDAO(con, schema);
 		cdao.selectCliente(c);

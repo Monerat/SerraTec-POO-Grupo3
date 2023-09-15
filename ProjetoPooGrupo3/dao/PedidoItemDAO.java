@@ -34,7 +34,6 @@ public class PedidoItemDAO {
 			System.err.println(e);
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public int incluirPedidoItem(PedidoItem pedidoitem) {

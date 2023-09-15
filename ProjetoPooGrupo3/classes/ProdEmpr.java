@@ -18,11 +18,11 @@ public class ProdEmpr {
 		ListaEmpresa listaEmpresa = new ListaEmpresa(con,schema);
 		
 		listaEmpresa.imprimirEmpresas();
-		pdi.setIdempresa(Util.validarInteiro("Insira o Id Empresa: "));
+		pdi.setIdempresa(Util.validarInteiro("Insira o Código da Empresa: "));
 		System.out.println();
 		
 		listaProdutos.imprimirProdutos();
-		pdi.setIdproduto(Util.validarInteiro("Insira o Id Produto: "));
+		pdi.setIdproduto(Util.validarInteiro("Insira o Código do Produto: "));
 		System.out.println();
 		
 		pdi.setVl_un(Util.validarDouble("Insira o Valor unitário do Produto: "));
@@ -36,11 +36,11 @@ public class ProdEmpr {
 		ListaEmpresa listaEmpresa = new ListaEmpresa(con,schema);
 		
 		listaEmpresa.imprimirEmpresas();
-		pi.setIdempresa(Util.validarInteiro("Insira o Id Empresa: "));
+		pi.setIdempresa(Util.validarInteiro("Insira o Código da Empresa: "));
 		System.out.println();
 		
 		listaProdutos.imprimirProdutos();
-		pi.setIdproduto(Util.validarInteiro("Insira o Id Produto: "));
+		pi.setIdproduto(Util.validarInteiro("Insira o Código do Produto: "));
 		System.out.println();
 		
 		pi.setVl_un(Util.validarDouble("Insira o Valor unitário do Produto: "));
@@ -51,26 +51,32 @@ public class ProdEmpr {
 	public int getIdprodempr() {
 		return idprodempr;
 	}
+	
 	public void setIdprodempr(int idprodempr) {
 		this.idprodempr = idprodempr;
 	}
+	
 	public double getVl_un() {
 		return vl_un;
 	}
+	
 	public void setVl_un(double vl_un) {
 		this.vl_un = vl_un;
 	}
+	
 	public int getIdproduto() {
 		return idproduto;
 	}
+	
 	public void setIdproduto(int idproduto) {
 		this.idproduto = idproduto;
 	}
+	
 	public int getIdempresa() {
 		return idempresa;
 	}
+	
 	public void setIdempresa(int idempresa) {
 		this.idempresa = idempresa;
 	}
-	
 }

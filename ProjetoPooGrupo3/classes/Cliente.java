@@ -19,64 +19,39 @@ public class Cliente extends Pessoa {
 	public static Cliente cadastrar() {
 		Cliente c = new Cliente();
 		
-		c.setNome(Util.validarString("Informe o Nome do Cliente: "));
-		c.setCpf(Util.validarCPF("Informe o CPF do Cliente: "));
-		c.setTelefone(Util.validarTelefone("Informe o Telefone do Cliente: "));
-		c.setEmail(Util.validarEmail("Informe o Email do Cliente: "));
-		c.setData_nasc(Util.validarData("Informe a Data de Nascimento do Cliente: "));
-		
-		// Pega o logradouro
+		c.setNome(Util.validarString("Informe o Nome: "));
+		c.setCpf(Util.validarCPF("Informe o CPF: "));
+		c.setTelefone(Util.validarTelefone("Informe o Telefone: "));
+		c.setEmail(Util.validarEmail("Informe o Email: "));
+		c.setData_nasc(Util.validarData("Informe a Data de Nascimento: "));
 		c.setLogradouro(Util.validarString("Logradouro: "));
-
-		// Pega o número
 		c.setNumero(Util.validarInteiro("Número: "));
-
-		// Pega o bairro
 		c.setBairro(Util.validarString("Bairro: "));
-
-		// Pega a cidade
 		c.setCidade(Util.validarString("Cidade: "));
-
-		// Pega o UF
 		c.setUf(Util.validarUf("UF: "));
-
-		// Junta as partes do endereço
 		c.setEndereco(c.getLogradouro() + ", " + c.getNumero() + ", " + c.getBairro() + ", " + c.getCidade() + ", " + c.getUf());
-		
 		
 		return c;
 	}
 	
 	public static Cliente select() {
 		Cliente c = new Cliente();
-		c.setIdcliente(Util.validarInteiro("Informe o id do Cliente: "));
+		c.setIdcliente(Util.validarInteiro("Informe o Código do Cliente: "));
 		return c;
 	}
 	
 	public static Cliente alterar(Cliente c) {
 		
-		c.setNome(Util.validarString("Informe o Nome do Cliente: "));
-		c.setCpf(Util.validarCPF("Informe o CPF do Cliente: "));
-		c.setTelefone(Util.validarTelefone("Informe o Telefone do Cliente: "));
-		c.setEmail(Util.validarEmail("Informe o Email do Cliente: "));
-		c.setData_nasc(Util.validarData("Informe a Data de Nascimento do Cliente: "));
-		
-		// Pega o logradouro
+		c.setNome(Util.validarString("Informe o Nome: "));
+		c.setCpf(Util.validarCPF("Informe o CPF: "));
+		c.setTelefone(Util.validarTelefone("Informe o Telefone: "));
+		c.setEmail(Util.validarEmail("Informe o Email: "));
+		c.setData_nasc(Util.validarData("Informe a Data de Nascimento: "));
 		c.setLogradouro(Util.validarString("Logradouro: "));
-
-		// Pega o número
 		c.setNumero(Util.validarInteiro("Número: "));
-
-		// Pega o bairro
 		c.setBairro(Util.validarString("Bairro: "));
-
-		// Pega a cidade
 		c.setCidade(Util.validarString("Cidade: "));
-
-		// Pega o UF
 		c.setUf(Util.validarString("UF: "));
-
-		// Junta as partes do endereço
 		c.setEndereco(c.getLogradouro() + ", " + c.getNumero() + ", " + c.getBairro() + ", " + c.getCidade() + ", " + c.getUf());
 		
 		return c;		
