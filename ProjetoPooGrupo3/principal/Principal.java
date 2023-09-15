@@ -17,7 +17,7 @@ public class Principal {
 	
 	public static final String BANCO = "grupo3_poo";
 	public static final String SCHEMA = "sistema";
-	public static final String PATH = "dadosConexao\\";
+	public static final String PATH = ".dadosConexao\\";
 	public static final String SFILE = "DadosConexao.ini";
 	
 	public static void main(String[] args) {
