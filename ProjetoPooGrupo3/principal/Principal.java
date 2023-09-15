@@ -23,7 +23,6 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		
-		//Criar o database
 		if (configInicial()) {
 			if (CreateDAO.createBD(BANCO, SCHEMA, dadosCon)) {
 				con = new Conexao(dadosCon); 
